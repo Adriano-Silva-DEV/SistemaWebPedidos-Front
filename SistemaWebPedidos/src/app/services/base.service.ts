@@ -1,13 +1,26 @@
 import { HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import { throwError } from "rxjs";
+import { environment } from "src/environments/environment";
+import { LocalStorageUtils } from "./localstorage";
 
 export abstract class BaseService{
-    protected UrlServiceV1 : string = "https://localhost:44334/api"
+    protected UrlServiceV1 : string = environment.apiUrlv1;
+
+    public localStorage = new LocalStorageUtils();
 
     protected ObterHeaderJson() {
         return {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json'
+            })
+        };
+    }
+
+    protected ObterAuthHeaderJson() {
+        return {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${this.localStorage.obterTokenUsuario()}`
             })
         };
     }
