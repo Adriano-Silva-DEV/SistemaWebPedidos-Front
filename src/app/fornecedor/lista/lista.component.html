@@ -1,0 +1,55 @@
+
+<div class="container main-container">
+  
+    <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "large" color = "#6f87e0" type = "ball-circus" [fullScreen] = "true">
+        <p style="color: white" > Carregando </p></ngx-spinner>
+   
+        <div class="row">
+            <div class="col-sm-2 col-12 ">
+                <app-menu-adm [menuActive]="'fornecedor'"> </app-menu-adm>
+            </div>
+               
+
+            <div class=" col-sm-10 col-12 ">
+                
+        <h3>FORNECEDORES</h3>
+        <hr>
+      
+    
+        <p>
+            <a class="btn botton-cadastrar text-white" [routerLink]="['/adm/fornecedores/adicionar-novo']">Novo Fornecedor</a>
+        </p>
+    <table class="table table-hover">
+        <thead class="thead-2">
+            <tr>
+                <th colspan="2">Nome</th>
+                <th  colspan="1">Documento</th>
+                <th colspan="1">Ativo?</th>
+                <th colspan="4"></th>
+            </tr>
+        </thead>
+        <tr *ngFor="let fornecedor of fornecedores">
+            <td class="text-pequeno" colspan="2">
+                {{ fornecedor.nome }}
+            </td>
+            <td class="text-pequeno" colspan="1">
+                {{ fornecedor.tipoFornecedor === 1 ? (fornecedor.documento | cpf) :  (fornecedor.documento | cnpj) }}
+            </td>
+            <td colspan="1">
+                <input [checked]="fornecedor.ativo" class="check-box" disabled="disabled" type="checkbox">
+            </td>
+            <td class="text-right" colspan="4">
+                <a class="btn btn-sm btn-danger" [routerLink]="['/adm/fornecedores/detalhes',fornecedor.id]">
+                    <span class="fa fa-search"></span>
+                </a>&nbsp;
+                <a class="btn  btn-sm btn-danger" [routerLink]="['/adm/fornecedores/editar',fornecedor.id]">
+                    <span class="fa fa-pencil-alt"></span>
+                </a>&nbsp;
+                <a class="btn  btn-sm btn-danger" [routerLink]="['/adm/fornecedores/excluir',fornecedor.id]">
+                    <span class="fa fa-trash"></span>
+                </a>
+            </td>
+        </tr>
+    </table>
+</div>
+</div>
