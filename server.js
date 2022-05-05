@@ -2,7 +2,7 @@ const express = require('express');
 
 const app = express();
 
-const appName = 'sistema-web-pedidos';
+const appName = 'SistemaWebPedidos';
 
 const outputPath = `${__dirname}/dist/${appName}` ;
 
