@@ -4,7 +4,7 @@ const app = express();
 
 const appName = 'App-tcc';
 
-const outputPath = `${__dirname}/dist${appName}` ;
+const outputPath = `${__dirname}/dist/${appName}` ;
 
 app.use(express.static(outputPath));
 
