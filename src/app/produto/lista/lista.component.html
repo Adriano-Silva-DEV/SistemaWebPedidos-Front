@@ -1,0 +1,83 @@
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="large" color="#6f87e0" type="ball-circus" [fullScreen]="true">
+    <p style="color: white"> Carregando </p>
+</ngx-spinner>
+
+
+<div class="container main-container">
+
+    <div class="row">
+
+        <div class=" col-sm-2 col-12 ">
+            <app-menu-adm [menuActive]="'produto'"> </app-menu-adm>
+        </div>
+
+
+        <div class=" col-sm-10 col-12 ">
+            <h3>PRODUTOS</h3>
+            <hr>
+
+            <p>
+                <a class="btn botton-cadastrar text-white" [routerLink]="['/adm/produto/adicionar-novo']">Novo
+                    Produto</a>
+            </p>
+            <table class="table table-hover">
+                <thead class="thead-2">
+                    <tr>
+                        <th colspan="1">
+
+                        </th>
+                        <th colspan="4">
+                            <span> Nome</span>
+                        </th>
+                        <!-- <th>
+                                Fornecedor
+                            </th> -->
+                        <th colspan="2">
+                            Valor
+                        </th>
+                        <th colspan="2">
+                            Ativo?
+                        </th>
+                        <th colspan="4">
+
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="table-produt">
+                    <tr *ngFor="let produto of produtos">
+                        <td colspan="1">
+                            <img claass="img-thumbnail rounded-right" src="{{imagens}}/{{ produto.imagem1 }}"
+                                onerror="this.src = 'https://cdn.neemo.com.br/uploads/settings_webdelivery/logo/996/notfound.png' "
+                                style="width: 50px; height: 70px">
+                        </td>
+                        <td colspan="4">
+                            {{ produto.nome }}222555
+                        </td>
+                        <!-- <td>
+                              {{ produto.fornecedor.nome }}
+                            </td> -->
+                        <td colspan="2">
+                            {{ produto.precoVenda | currency:'BRL':true }}
+                        </td>
+                        <td colspan="2">
+                            <input [checked]="produto.ativo" class="check-box" disabled="disabled" type="checkbox">
+                        </td>
+                        <td class="text-center " colspan="4">
+                            <a class="btn m-1 btn-sm btn-danger" [routerLink]="['/adm/produtos/detalhes',produto.id]">
+                                <span class="fa fa-search"></span>
+                            </a>&nbsp;
+                            <a class="btn m-1 btn-sm btn-danger" [routerLink]="['/adm/produtos/editar',produto.id]">
+                                <span class="fa fa-pencil-alt"></span>
+                            </a>&nbsp;
+                            <a class="btn m-1 btn-sm btn-danger" [routerLink]="['/adm/produtos/excluir',produto.id]">
+                                <span class="fa fa-trash"></span>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</div>

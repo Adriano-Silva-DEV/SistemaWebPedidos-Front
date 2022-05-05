@@ -1,0 +1,42 @@
+<div class="row"> 
+            
+    <div class="col-sm-2 col-12 "> 
+     <app-menu-adm [menuActive]="'categoria'" > </app-menu-adm>       
+    </div>
+
+    <div class=" col-sm-10 col-12 ">
+<div class="container main-container">
+    <h3>Tem certeza que deseja excluir a Categoria ?</h3>
+    <hr />
+
+    <div class="alert alert-danger" *ngIf="errors.length > 0">
+        <h3 id="msgRetorno">Ops!!</h3>
+        <ul>
+            <li *ngFor="let error of errors">{{ error }}</li>
+        </ul>
+    </div>
+
+    <div>     
+        <dl class="row">
+            <dt class="col-sm-2">
+            <label class="control-label">Nome</label>
+        </dt>
+            <dd class="col-sm-10">
+              <div class="nome">   {{ categoria.nome }} </div>
+            </dd>
+            <dt class="col-sm-2">
+                <label class="control-label">Ativo</label>
+        </dt>
+            <dd class="col-sm-10">
+                <input [checked]="categoria.ativo" class="check-box" disabled="disabled" type="checkbox">
+            </dd>
+        </dl>
+    </div>
+
+    <div>
+        <a class="btn btn-danger text-white" (click)="excluirEvento()">Excluir</a>&nbsp;
+        <a class="btn btn-info" [routerLink]="['/adm/categoria/listar-todos']">Voltar</a>
+    </div>
+</div>
+
+</div>

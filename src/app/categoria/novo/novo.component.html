@@ -1,0 +1,48 @@
+<div class="container main-container">
+    <div class="row">
+
+        <div class="col-sm-2 col-12 ">
+            <app-menu-adm [menuActive]="'categoria'"> </app-menu-adm>
+        </div>
+
+        <div class="col-sm-10 col-12 ">
+
+            <h3>Nova Categoria</h3>
+            <hr>
+            <form novalidate="novalidate" (ngSubmit)="adicionarCategoria()" [formGroup]="categoriaForm">
+
+                <div class="alert alert-danger" *ngIf="errors.length > 0">
+                    <h3 id="msgRetorno">Ops!! </h3>
+                    <ul>
+                        <li *ngFor="let error of errors">{{ error }}</li>
+                    </ul>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">Nome</label>
+                    <div>
+                        <input class="form-control" id="nome" type="text" placeholder="Nome (requerido)"
+                            formControlName="nome" [ngClass]="{'is-invalid': displayMessage.nome }" />
+                        <span class="text-danger" *ngIf="displayMessage.nome">
+                            <p [innerHTML]="displayMessage.nome"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" CHECKED type="checkbox" id="ativo" formControlName="ativo"
+                            name="ativo" value="true"> Ativo?
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Cadastrar" class="btn btn-primary">&nbsp;
+                    <a class="btn btn-info" [routerLink]="[ '/adm/categoria/listar-todos']">Voltar</a>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</div>

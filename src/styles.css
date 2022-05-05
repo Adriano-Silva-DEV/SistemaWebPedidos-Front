@@ -1,0 +1,163 @@
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+.main-container {
+    padding-top: 25px;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-bottom: 100px;
+    margin-right: auto;
+    margin-left: auto;
+    overflow: hidden;
+}
+
+
+/* Sticky footer styles
+  -------------------------------------------------- */
+
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 500px) {
+    html {
+        font-size: 16px;
+    }
+    .table-produt{
+        font-size: 9px;
+    }
+    .text-pequeno{
+   
+        font-size:9px;
+    }
+    
+
+}
+
+@media (min-width: 800px) {
+    html {
+        font-size: 16px;
+    }
+    .table-produt{
+        font-size: 12px;
+    }
+    .text-pequeno{
+   
+        font-size:14px;
+    }
+    
+
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+
+/* Sticky footer styles
+  -------------------------------------------------- */
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background: rgb(171,171,214);
+    background: linear-gradient(90deg, rgba(171,171,214,0.5074404761904762) 0%, rgba(111,134,147,0.4290091036414566) 37%, rgba(214,171,183,0.4906337535014006) 72%);
+    color: #000000;
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+    
+}
+
+.corpo-site{
+    background: rgba(253, 253, 253, 0.932);
+    border-radius:20px !important;
+   
+}
+
+.thead-2{
+    background: rgb(181,74,50);
+   background: linear-gradient(90deg, rgba(181,74,50,1) 0%, rgb(204, 41, 84) 49%, rgba(92,23,31,1) 100%);
+    color: #e5e5e5;
+    font-size: 12px;
+}
+
+
+
+.header{
+    
+    background: rgb(181,74,50);
+   background: linear-gradient(90deg, rgba(181,74,50,1) 0%, rgb(204, 41, 84) 49%, rgba(92,23,31,1) 100%);
+}
+
+td{ color: #030000;}
+
+.botton-cadastrar{
+   background : #c7483f;
+}
+
+.btn-active-adm{
+    color: #ffffff !important;
+    background-color: #c7483f;
+}
+
+.btn-menu-adm{
+    color: #c7483f;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;  
+}
+
+.btn-menu-adm:hover{
+    color: #ffffff;
+    background-color:#c7483f;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;  
+}
+
+h3{
+    color: #c7483f;
+    font-family: 'Times New Roman', Times, serif;
+    
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    /* Vertically center the text there */
+
+   /* background: rgba(253, 253, 253, 0.932); */
+
+    background: rgb(181,74,50);
+    background: linear-gradient(90deg, rgba(181,74,50,1) 0%, rgb(204, 41, 84) 49%, rgba(92,23,31,1) 100%);
+
+    color:  white !important;
+   
+}
+
+input,
+select,
+file,
+textarea {
+    max-width: 400px;
+}
