@@ -2,7 +2,7 @@ const express = require('express');
 
 const app = express();
 
-const appName = 'App-tcc';
+const appName = 'sistema-web-pedidos';
 
 const outputPath = `${__dirname}/dist/${appName}` ;
 
