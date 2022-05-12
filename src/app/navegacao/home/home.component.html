@@ -6,7 +6,7 @@
         <div class="row d-flex justify-content-center">
 
 
-            <div class="card m-2 my-3 red col-sm-2 col-4" *ngFor="let produto of produtos; let i = index" >
+            <div class="card m-2 my-3 red col-12 col-md-2 card-prod" *ngFor="let produto of produtos; let i = index" >
               
                 <img class="img-card-roduto rounded mx-auto d-block card-img" title="Ver detalhes do produto"
                 (mouseover)='temp[i] = true' (mouseout)='temp[i] = false'
