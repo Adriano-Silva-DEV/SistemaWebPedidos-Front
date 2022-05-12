@@ -1,61 +1,61 @@
-<header class=" py-5 mb-5">
-   
-</header>
+<app-menu-categoria class="m-3"> </app-menu-categoria>
 
-<div class="container main-container">
+<div class="container-fluid main-container  ">
     <div class="row text-center">
 
-        <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card h-100">
-                <img class="card-img-top" src="/assets/crossplat.jpg" height="164px" width="253px" alt="">
-                <div class="card-body">
-                    <h4 class="card-title">Multiplataforma</h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+        <div class="row d-flex justify-content-center">
+
+
+            <div class="card m-2 my-3 red col-sm-2 col-4" *ngFor="let produto of produtos; let i = index" >
+              
+                <img class="img-card-roduto rounded mx-auto d-block card-img" title="Ver detalhes do produto"
+                (mouseover)='temp[i] = true' (mouseout)='temp[i] = false'
+                src="{{imagens}}/{{ produto.imagem1 }}"
+                    onerror="this.src = 'https://cdn.neemo.com.br/uploads/settings_webdelivery/logo/996/notfound.png' "
+                    >
+
+
+                <div class="" >
+                    <div *ngIf="temp[i]" class="card-carrinho mt-3"> DETALHES DO PRODUTO
+                        <br>
+                        <i class="fa-solid fa-tags img-carrinho"></i>
+                    </div>
+
+                    <div *ngIf="temp_carrinho[i]" class="card-carrinho mt-3"> ADICIONAR PRODUTO AO CARRINHO
+                    </div>
+
+                    <div class="card-body5" *ngIf="!temp[i] && !temp_carrinho[i]">
+                        <div class="card-title5 desc-card-produto">
+                            {{ produto.nome }} <br>
+                            <span class="preco"> {{produto.precoVenda | currency:'BRL':true }} </span>
+                        </div>
+                    </div>
+
                 </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Saiba mais</a>
+                <div class="card-carrinho mt-1 p-1  img-carrinho"   (mouseover)='temp_carrinho[i] = true' (mouseout)='temp_carrinho[i] = false'>
+                    <i class="fa-solid fa-cart-shopping "></i>
                 </div>
             </div>
         </div>
 
-        <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card h-100">
-                <img class="card-img-top" src="/assets/performance.jpg" height="164px" width="253px" alt="">
-                <div class="card-body">
-                    <h4 class="card-title">Performance</h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Saiba mais</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card h-100">
-                <img class="card-img-top" src="/assets/produtividade.jpg" height="164px" width="253px" alt="">
-                <div class="card-body">
-                    <h4 class="card-title">Produtividade</h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Saiba mais</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card h-100">
-                <img class="card-img-top" src="/assets/full_dev.jpg" height="164px" width="253px" alt="">
-                <div class="card-body">
-                    <h4 class="card-title">Funcionalidades</h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Saiba mais</a>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 <!-- Fim Content -->
+
+
+
+
+<ul class="navbar-nav flex-grow-1">
+    <li class="nav-item">
+        <a class="nav-link " [routerLink]="['/home']">Home</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link " [routerLink]="['/adm/fornecedores/listar-todos']">Fornecedores</a>
+    </li>
+    <li class=" nav-item ">
+        <a class="nav-link  " [routerLink]="['/adm/produtos/listar-todos']">Produtos</a>
+    </li>
+    <li class=" nav-item ">
+        <a class="nav-link " [routerLink]="['/adm/categoria/listar-todos']">Categorias</a>
+    </li>
+</ul>

@@ -42,7 +42,7 @@ export class ExcluirComponent implements OnInit {
     const toast = this.toastr.success('categoria excluido com Sucesso!', 'Sucesso');
     if (toast) {
       toast.onHidden.subscribe(() => {
-        this.router.navigate(['/categoria/listar-todos']);
+        this.router.navigate(['/adm/categoria/listar-todos']);
       });
     }
   }

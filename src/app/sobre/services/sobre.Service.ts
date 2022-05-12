@@ -24,7 +24,7 @@ export class SobreService extends BaseService {
     }
     
     atualizarSobre(sobre: Sobre): Observable<Sobre> {
-        let response = this.http.put(this.UrlServiceV1+'/Sobre/salvar/',sobre, this.ObterAuthHeaderJson())
+        let response = this.http.put(this.UrlServiceV1+'/Sobre/salvar',sobre, this.ObterAuthHeaderJson())
         .pipe(
           map(this.extractData),
           catchError(this.serviceError)

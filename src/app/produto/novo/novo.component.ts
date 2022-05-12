@@ -142,7 +142,7 @@ export class NovoComponent implements OnInit {
     let toast = this.toastr.success('Produto cadastrado com sucesso!', 'Sucesso!');
     if (toast) {
       toast.onHidden.subscribe(() => {
-        this.router.navigate(['/produtos/listar-todos']);
+        this.router.navigate(['/adm/produtos/listar-todos']);
       });
     }
   }

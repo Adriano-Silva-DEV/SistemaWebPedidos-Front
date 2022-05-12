@@ -16,7 +16,7 @@ export class CategoriaService extends BaseService {
     }
 
     obterTodos(): Observable<CategoriaModel[]> {
-        let response = this.http.get(this.UrlServiceV1+'/Categorias', this.ObterAuthHeaderJson())
+        let response = this.http.get(this.UrlServiceV1+'/Categorias')
         .pipe(
           map(this.extractData),
           catchError(this.serviceError)
