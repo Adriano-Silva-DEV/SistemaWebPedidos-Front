@@ -120,7 +120,7 @@ export class EditarComponent implements OnInit {
      );
      if (toast) {
        toast.onHidden.subscribe(() => {
-         this.router.navigate(['/categoria/listar-todos']);
+         this.router.navigate(['/adm/categoria/listar-todos']);
        });
      }
    }

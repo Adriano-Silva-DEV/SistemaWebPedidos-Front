@@ -1,0 +1,91 @@
+@media (min-width: 500px) {
+  .card-produto {
+    min-width: 400px;
+    min-height: 400px;
+
+    padding: 3cm;
+  }
+
+  .desc-card-produto {
+    text-decoration: none;
+  }
+}
+
+
+@media (min-width: 800px) {
+  .card-produto {
+    min-width: 120px;
+    min-height: 120px;
+    padding: 4cm;
+  }
+
+  .img-card-roduto {
+    min-height: 150px;
+    min-width: 150px;
+  }
+
+  .desc-card-produto {
+    text-decoration: none;
+  }
+}
+
+.card-body5 {
+   
+  text-decoration: none;
+  color: #c73636 !important;
+  font-size: 18px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  margin-top: 20px;
+}
+
+.card-body5:hover {
+  text-decoration: none;
+  color: #ffffff !important;
+  background-color: #c73636;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.produt-card {
+  transform: translateY(-5px);
+  cursor: pointer;
+}
+
+.blue {
+  border-left: 3px solid #4895ff;
+}
+
+.green {
+  border-left: 3px solid #3bb54a;
+}
+
+.red {
+  border-left: 3px solid #b3404a;
+}
+
+.card:hover {
+  transform: translateY(-15px);
+  cursor: pointer;
+  border-left: 3px solid #c5772e
+}
+
+.card p {
+  color: #a3a5ae;
+  font-size: 16px;
+}
+
+.image {
+  float: right;
+  max-width: 64px;
+  max-height: 64px;
+}
+
+.card {
+  border-radius: 5px;
+  box-shadow: 7px 7px 13px 0px rgba(50, 50, 50, 0.22);
+  padding: 30px; 
+  margin: 20px;
+  
+  transition: all 0.3s ease-out;
+}

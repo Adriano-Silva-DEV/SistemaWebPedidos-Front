@@ -1,61 +1,39 @@
-<header class=" py-5 mb-5">
-   
-</header>
 
-<div class="container main-container">
+<app-menu-categoria class="m-3"> </app-menu-categoria>    
+    
+<div class="container-fluid main-container  ">
     <div class="row text-center">
+   
+        <div class="row d-flex justify-content-center">
+       
 
-        <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card h-100">
-                <img class="card-img-top" src="/assets/crossplat.jpg" height="164px" width="253px" alt="">
-                <div class="card-body">
-                    <h4 class="card-title">Multiplataforma</h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+            <div class="card m-2 red" title="Adicionar ao carrinho" style="width: 18rem;"   *ngFor="let produto of produtos">
+                <img class="img-card-roduto rounded mx-auto d-block" src="{{imagens}}/{{ produto.imagem1 }}"
+                onerror="this.src = 'https://cdn.neemo.com.br/uploads/settings_webdelivery/logo/996/notfound.png' "
+                style="width: 50px; height: 70px">
+                <div class="card-body5  " >
+                     <div class="card-title5 desc-card-produto">{{ produto.nome }}</div> 
                 </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Saiba mais</a>
-                </div>
-            </div>
-        </div>
+              </div>
 
-        <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card h-100">
-                <img class="card-img-top" src="/assets/performance.jpg" height="164px" width="253px" alt="">
-                <div class="card-body">
-                    <h4 class="card-title">Performance</h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Saiba mais</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card h-100">
-                <img class="card-img-top" src="/assets/produtividade.jpg" height="164px" width="253px" alt="">
-                <div class="card-body">
-                    <h4 class="card-title">Produtividade</h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Saiba mais</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card h-100">
-                <img class="card-img-top" src="/assets/full_dev.jpg" height="164px" width="253px" alt="">
-                <div class="card-body">
-                    <h4 class="card-title">Funcionalidades</h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Saiba mais</a>
-                </div>
-            </div>
-        </div>
-    </div>
+</div>
 </div>
 <!-- Fim Content -->
+
+
+
+
+<ul class="navbar-nav flex-grow-1">
+    <li class="nav-item">
+        <a class="nav-link " [routerLink]="['/home']">Home</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link " [routerLink]="['/adm/fornecedores/listar-todos']">Fornecedores</a>
+    </li>
+    <li class=" nav-item ">
+        <a class="nav-link  " [routerLink]="['/adm/produtos/listar-todos']">Produtos</a>
+    </li>
+    <li class=" nav-item ">
+        <a class="nav-link " [routerLink]="['/adm/categoria/listar-todos']">Categorias</a>
+    </li>
+</ul>

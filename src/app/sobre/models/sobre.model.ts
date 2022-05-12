@@ -6,11 +6,15 @@ export class Sobre {
       razaoSocial : string;
       cpf : string;
       nomeEstabelecimento : string;
-      horarioAbertura : string;
-      horarioFechamento : string;
+      horarioAbertura : string = "08:00";
+      horarioFechamento : string = "18:00";
       descricao : string;
       contatoPrincipal : string;
       contatoSecundario : string;
       email : string;
-     endereco : Endereco
+      numero: string;
+      rua: string;
+      bairro: string;
+      cidade: string;
+      estado: string;
 }

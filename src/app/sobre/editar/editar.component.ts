@@ -174,10 +174,10 @@ export class EditarComponent implements OnInit {
   preencherForm() {
     this.sobreForm.patchValue({
       pessoaFisica: this.sobre.pessoaFisica,
-      tipoDocumento: this.sobre.pessoaFisica == true ? 1 : 2,
+      tipoDocumento: this.sobre.pessoaFisica == true ? "1" : "2",
       documento:
-        this.sobre.pessoaFisica == true ? this.sobre.cpf : this.sobre.cnpj,
-
+        this.sobre.pessoaFisica ? this.sobre.cpf : this.sobre.cnpj,
+  
       razaoSocial: this.sobre.razaoSocial,
       nomeEstabelecimento: this.sobre.nomeEstabelecimento,
       horarioAbertura: this.sobre.horarioAbertura,
@@ -186,16 +186,14 @@ export class EditarComponent implements OnInit {
       contatoPrincipal: this.sobre.contatoPrincipal,
       contatoSecundario: this.sobre.contatoSecundario,
       email: this.sobre.email,
+      rua: this.sobre.rua,
+      numero: this.sobre.numero,
+      bairro: this.sobre.bairro,
+      cidade: this.sobre.cidade,
+      estado: this.sobre.estado,
     });
 
-    if (this.sobre.endereco) {
-      this.sobreForm.patchValue({
-        rua: this.sobre.endereco.rua,
-        bairro: this.sobre.endereco.bairro,
-        cidade: this.sobre.endereco.cidade,
-        estado: this.sobre.endereco.estado,
-      });
-    }
+  
 
     if (this.tipoDocumentoForm().value === '1') {
       this.documento().setValidators([
@@ -262,18 +260,31 @@ export class EditarComponent implements OnInit {
 
   editarInfo() {
     if (this.sobreForm.dirty && this.sobreForm.valid) {
-      this.sobre = Object.assign({}, this.sobre, this.sobreForm.value);
+      // this.sobre = Object.assign({}, this.sobre, this.sobreForm.value);
+      this.sobre.contatoPrincipal = this.sobreForm.value.contatoPrincipal;
+      this.sobre.razaoSocial = this.sobreForm.value.razaoSocial;
+      this.sobre.nomeEstabelecimento = this.sobreForm.value.nomeEstabelecimento;
+      this.sobre.horarioAbertura = '08:00';
+      this.sobre.horarioFechamento = '09:00';
+      this.sobre.descricao = this.sobreForm.value.descricao;
+      this.sobre.email = this.sobreForm.value.email;
 
-      if (this.sobreForm.value.tipoDocumento == 1) {
-        this.sobre.cpf = this.sobreForm.value.Documento;
+
+      this.sobre.rua = this.sobreForm.value.rua;
+      this.sobre.numero = this.sobreForm.value.numero;
+      this.sobre.bairro = this.sobreForm.value.bairro;
+      this.sobre.cidade = this.sobreForm.value.cidade;
+      this.sobre.estado = this.sobreForm.value.estado;
+
+      if (this.sobreForm.value.tipoDocumento == "1") {
+        this.sobre.cpf = this.sobreForm.value.documento;
+        this.sobre.cnpj = '';
         this.sobre.pessoaFisica = true;
       } else {
-        this.sobre.cnpj = this.sobreForm.value.Documento;
+        this.sobre.cnpj = this.sobreForm.value.documento;
+        this.sobre.cpf = '';
         this.sobre.pessoaFisica = false;
       }
-
-      this.sobre.horarioAbertura = null;
-      this.sobre.horarioFechamento = null;
 
       console.log(this.sobre);
 
@@ -298,7 +309,7 @@ export class EditarComponent implements OnInit {
     );
     if (toast) {
       toast.onHidden.subscribe(() => {
-        this.router.navigate(['/adm/sobre']);
+        this.router.navigate(['/adm/sobre/info']);
       });
     }
   }

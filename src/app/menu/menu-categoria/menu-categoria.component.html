@@ -1,0 +1,22 @@
+
+  <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark border-bottom box-shadow  bg-menu-categoria">
+    <div class="container">
+
+        <a class="navbar-brand text-white navbar-toggler border-0 ">   Categorias </a>
+       
+        <button class="navbar-toggler " type="button" (click)="isCollapsed = !isCollapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+       
+            <div class="navbar-collapse collapse d-sm-inline-flex " [ngbCollapse]="isCollapsed">
+             
+         
+
+            <ul class="row navbar-nav  my-2 flex-grow-1 justify-content-center">
+                <li class=" col-2 nav-item text-center  font-weight-bold text-justify" *ngFor="let categoria of categorias">
+                    <a class="nav-link2   btn-menu-cat " href="#">{{categoria.nome | uppercase}}<span class="sr-only">(Página atual)</span></a>
+                   </li>
+            </ul>
+        </div>
+    </div>
+</nav>
