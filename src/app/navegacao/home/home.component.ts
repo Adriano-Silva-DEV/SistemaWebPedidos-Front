@@ -12,6 +12,8 @@ import { environment } from 'src/environments/environment';
 export class HomeComponent {
   produtos: Produto[];
   imagens: string = environment.imgUrl;
+  temp: boolean[] = [];
+  temp_carrinho: boolean[] = [];
   constructor(
     private produtoService: ProdutoService,
     private spinner: NgxSpinnerService
@@ -29,4 +31,10 @@ export class HomeComponent {
       }
     );
   }
+
+  over(string : string){
+      string = "Adicionar ao carrinho"
+    console.log(string);
+  }
+
 }
