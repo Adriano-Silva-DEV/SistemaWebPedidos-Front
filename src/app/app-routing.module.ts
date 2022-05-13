@@ -32,6 +32,11 @@ const routes: Routes = [
     loadChildren: () => import('./sobre/sobre.module')
       .then(m => m.SobreModule)
   },
+  {
+    path: 'carrinho',
+    loadChildren: () => import('./carrinho/carrinho.module')
+      .then(m => m.CarrinhoModule)
+  },
   { path: 'nao-encontado', component: NotFoundComponent },
   { path: '**', component: NotFoundComponent },
 ];

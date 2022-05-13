@@ -20,7 +20,13 @@ import { ImageCropperModule} from 'ngx-image-cropper';
 import { ListaProdutosComponent } from './lista-produtos/lista-produtos.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MenuModule } from '../menu/menu.module';
-
+import { CardProdutoComponent } from './card-produto/card-produto.component';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule} from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -30,7 +36,8 @@ import { MenuModule } from '../menu/menu.module';
     EditarComponent,
     ExcluirComponent,
     DetalhesComponent,
-    ListaProdutosComponent
+    ListaProdutosComponent,
+    CardProdutoComponent
   ],
   imports: [
     CommonModule,
@@ -42,7 +49,13 @@ import { MenuModule } from '../menu/menu.module';
     ReactiveFormsModule,
     NgxSpinnerModule,
     ImageCropperModule,
-    MenuModule
+    MenuModule,
+    MatSliderModule,   
+    MatButtonModule,
+MatMenuModule,
+MatToolbarModule,
+MatIconModule,
+MatCardModule
   ],
   providers: [
     ProdutoService,
@@ -52,6 +65,6 @@ import { MenuModule } from '../menu/menu.module';
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
   ],
-  exports:[ ListaProdutosComponent]
+  exports:[ ListaProdutosComponent, CardProdutoComponent]
 })
 export class ProdutoModule { }

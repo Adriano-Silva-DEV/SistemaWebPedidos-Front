@@ -1,0 +1,37 @@
+.img-produto{
+    width: 90px ;
+    height: 90px;
+    cursor: pointer;
+}
+
+.total-carrinho{
+    width: 100%;
+    font-size: 20px;
+    height: 240px;
+}
+
+
+h3{
+    font-size: 20px;
+}
+
+.qnt{
+    font-size: 15px; 
+    font-family: 'Times New Roman', Times, serif; 
+   color: crimson;
+}
+
+.red {
+    border-left: 3px solid #f74756;
+  }
+
+  .sucess {
+    border-left: 3px solid #2dbb2d;
+  }
+
+
+  .qnt-item{
+      font-size: 40px;
+      font-family: 'Times New Roman', Times, serif; 
+      color: crimson;
+  }

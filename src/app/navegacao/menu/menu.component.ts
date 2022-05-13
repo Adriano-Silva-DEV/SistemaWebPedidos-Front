@@ -8,6 +8,8 @@ import { FornecedorGuard } from '../../fornecedor/services/fornecedor.guard';
   templateUrl: './menu.component.html',
 })
 export class MenuComponent implements OnInit {
+  localStorage = new LocalStorageUtils();
+  badge: number = 0;
 
   exibirMenuAdministrador : boolean = false;
   localStorageUtils = new LocalStorageUtils();
@@ -21,7 +23,13 @@ export class MenuComponent implements OnInit {
   
     ngOnInit(): void {
       this.exibirMenuAdministrador = this.exibirPainelAdmin();
+
+      setInterval(()=>{
+        this.badge = this.localStorage.obterCarrinho().itemCarrinho.length;
+      }, 1000);
+      
   }
+
 
 
   exibirPainelAdmin(){
@@ -42,8 +50,5 @@ export class MenuComponent implements OnInit {
     
         return true;
 
-  }
-
- 
-  
+  } 
 }
