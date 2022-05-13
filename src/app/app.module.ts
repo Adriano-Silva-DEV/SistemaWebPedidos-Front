@@ -20,7 +20,12 @@ import { MenuAdmComponent } from './menu/menu-adm/menu-adm.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MenuModule } from './menu/menu.module';
 import { SobreModule } from './sobre/sobre.module';
-
+import { MatSliderModule } from '@angular/material/slider';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule} from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
 
 registerLocaleData(localePt)
 
@@ -48,7 +53,14 @@ export const httpInterceptorProviders =
     ProdutoModule,
     NgxSpinnerModule,
     MenuModule,
-    SobreModule
+    SobreModule,
+    MatSliderModule,
+    MatSliderModule,   
+    MatButtonModule,
+MatMenuModule,
+MatToolbarModule,
+MatIconModule,
+MatCardModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt-BR' },

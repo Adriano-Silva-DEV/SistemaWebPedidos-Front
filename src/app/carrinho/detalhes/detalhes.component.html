@@ -1,0 +1,50 @@
+<app-menu-categoria class="m-3"> </app-menu-categoria>
+
+<div class="container main-container my-5">
+
+
+    <h3> {{ produto.nome }} </h3>
+    <br>
+
+    <div class="row">
+
+        <mat-card class="col-6 col-md-4">
+
+            <img class="img-fluid rounded " src="{{imagens}}/{{ produto.imagem1 }}" style="width: 300px; height: 428px">
+
+        </mat-card>
+
+        <div class="col-6 col-md-8">
+
+            <mat-card class="produto-descricao">
+                <dl>
+                    <dt>
+                       <h1> Descrição</h1> 
+                    </dt>
+                    <dd>
+                      
+                        {{ produto.descricao }}
+                    </dd>
+                    <dt>
+                        <br>
+                        Valor
+                    </dt>
+                    <dd>
+                        {{ produto.precoVenda | currency:'BRL':true }}
+
+                    </dd>
+                </dl>
+
+                <div class="buton position-relative">
+                    <button mat-raised-button color="warn" (click)="adcionarCarrinho(produto)"><i
+                            class="fa-solid fa-cart-shopping "></i> Carrinho</button>
+                    &nbsp; &nbsp;
+                    <a class="btn btn-info" href="javascript:window.history.back();">Voltar</a>
+
+                </div>
+            </mat-card>
+        </div>
+    </div>
+
+
+</div>

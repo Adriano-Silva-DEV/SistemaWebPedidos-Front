@@ -2,47 +2,27 @@
 
 <div class="container-fluid main-container  ">
     <div class="row text-center">
-
-        <div class="row d-flex justify-content-sm-center">
-
-
-            <div class="card m-2 my-3 red col-12 col-md-2 card-prod " *ngFor="let produto of produtos; let i = index">
-
-                <img class="img-card-roduto rounded mx-auto d-block card-img" title="Ver detalhes do produto"
-                    (mouseover)='temp[i] = true' (mouseout)='temp[i] = false' src="{{imagens}}/{{ produto.imagem1 }}"
-                    onerror="this.src = 'https://cdn.neemo.com.br/uploads/settings_webdelivery/logo/996/notfound.png' ">
-
-
-                <div class="">
-
-                    <!--    <div *ngIf="temp_carrinho[i]" class="card-carrinho mt-3"> ADICIONAR PRODUTO AO CARRINHO
-                    </div>
-                     -->
-                    <div *ngIf="temp[i]" class="card-carrinho p-3 mt-3"> DETALHES DO PRODUTO 
-                        <br>
-                        <i class="fa-solid fa-tags img-carrinho"></i>
-                    </div>
-
-                    <div class="card-body5" *ngIf="!temp[i] && !temp_carrinho[i]">
-                        <div class="card-title5 desc-card-produto">
-                            {{ produto.nome }} <br>
-                            <span class="preco"> {{produto.precoVenda | currency:'BRL':true }} </span>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="card-carrinho mt-1 p-1  img-carrinho">
-                    <i class="fa-solid fa-cart-shopping "></i>
-                </div>
-            </div>
-        </div>
+        
+            <app-card-produto [produtos]="produtos"> </app-card-produto>
+     
 
     </div>
 </div>
 <!-- Fim Content -->
 
 
-
+<h3>Fab Buttons</h3>
+<div class="example-button-row">
+  <button mat-fab>Basic</button>
+  <button mat-fab color="primary">Primary</button>
+  <button mat-fab color="accent">Accent</button>
+  <button mat-fab color="warn">Warn</button>
+  <button mat-fab disabled>Disabled</button>
+  <button mat-fab aria-label="Example icon-button with a heart icon">
+    <mat-icon>favorite</mat-icon>
+  </button>
+  <a mat-fab routerLink=".">Link</a>
+</div>
 
 <ul class="navbar-nav flex-grow-1">
     <li class="nav-item">

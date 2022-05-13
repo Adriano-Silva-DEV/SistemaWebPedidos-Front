@@ -4,11 +4,14 @@
 
 export const environment = {
   production: false,
-  apiUrlv1: 'https://localhost:44334/api',
-  imgUrl: 'https://localhost:44334/imgs'
+   apiUrlv1: 'https://tcc-adiano.azurewebsites.net/api',
+  imgUrl: 'https://tcc-adiano.azurewebsites.net/imgs' 
+ 
+  /* apiUrlv1: 'https://localhost:44334/api',
+  imgUrl: 'https://localhost:44334/imgs' */
 };
 
-
+/* https://tcc-adiano.azurewebsites.net/ */
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
