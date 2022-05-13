@@ -145,7 +145,7 @@ export class EditarComponent implements OnInit {
 
       if(this.imagemNome)
       this.produto.imagem1 = this.imagemNome;
-   //  this.produto.precoVenda = CurrencyUtils.StringParaDecimal(this.produto.precoVenda);
+     //this.produto.precoVenda = CurrencyUtils.StringParaDecimal(this.produto.precoVenda);
 
      this.produtoService.atualizarProduto(this.produto)
         .subscribe(

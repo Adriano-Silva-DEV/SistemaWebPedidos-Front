@@ -1,0 +1,59 @@
+<app-menu-categoria class="m-3"> </app-menu-categoria>
+
+<div class="container-fluid main-container  ">
+
+    <div class="row">
+        <div class="col-12 col-sm-6 my-5">
+            <div class="row text-center">
+                <mat-card class="col-12 red my-1" *ngFor="let item of itensCarrinho">
+
+                    <div class="row">
+                        <div class="col-4">
+                            <span class="qnt "> Quantidade </span> <br> <br> 
+                            <span class="qnt-item my-3"> {{ item.quantidade }} </span>
+                            <br>                    
+                            <button *ngIf="item.quantidade > 1" mat-mini-fab color="accent" aria-label=""
+                                (click)="subtrairItem(item.produto.id)">
+                                <mat-icon>exposure_neg_1</mat-icon>
+                            </button> &nbsp;
+                            <button mat-mini-fab color="accent" aria-label="" (click)="adicionarItem(item.produto.id)">
+                                <mat-icon>plus_one</mat-icon>
+                            </button>
+                        </div>
+                       
+                        <div class="col-4">
+
+                            <img class="img-produto rounded mx-auto d-block card-img" title=""
+                                src="{{imagens}}/{{ item.produto.imagem1 }}"
+                                onerror="this.src = 'https://cdn.neemo.com.br/uploads/settings_webdelivery/logo/996/notfound.png' "
+                                 [routerLink]="['/carrinho/detalhes',item.produto.id]">
+                            <br>
+                                              
+                           
+                        </div>
+                        <div class="col-4">
+                            <h3> {{ item.produto.nome | uppercase }} </h3>
+                            <br>
+                            <button mat-raised-button color="warn"
+                            (click)="removerItem(item.produto.id)">Remover</button>
+                                   
+                        </div>
+                    </div>
+                </mat-card>
+
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 my-5 " *ngIf="this.totalPedido != 0">
+            <mat-card class="total-carrinho sucess">
+                TOTAL PEDIDO: {{ totalPedido | currency:'BRL':true }}
+            </mat-card>
+        </div>
+
+        <div class="col-12 col-sm-12 " *ngIf="this.totalPedido == 0">
+            <mat-card class="total-carrinho sucess">
+                <br><br>
+                <h3> VOCÊ NÃO POSSUI ITENS NO PEDIDO NO MOMENTO</h3>
+            </mat-card>
+        </div>
+    </div>
+</div>

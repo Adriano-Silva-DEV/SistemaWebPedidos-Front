@@ -1,0 +1,23 @@
+img{
+    min-width: 350px;
+    min-height: 350px;
+
+    max-width: 350px;
+    max-height: 350px;
+}
+
+h3{
+    font-size: 70px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+
+.produto-descricao{
+    min-height: 380px;
+    font-size: 20px;
+    color: rgb(121, 111, 111);
+}
+
+.button{
+
+}

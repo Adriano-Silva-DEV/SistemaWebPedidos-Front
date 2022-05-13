@@ -6,11 +6,23 @@
                 <app-menu-login></app-menu-login>
                 </button>
                 
-                <input class="form-control mx-5 " type="search" placeholder="Pesquisar" aria-label="Pesquisar">
-                <i class="fa fa-search text-white fa-lg "></i>
-           
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" [ngbCollapse]="isCollapsed">
 
+                        <div class="input-group ml-5">
+                            <input type="text" class="form-control" />
+                            <span class="input-group-btn">
+                              <button type="button" class="btn btn-default">
+                                <i class="fa fa-search text-white fa-lg "></i>
+                              </button>
+                            </span>
+                           
+                          </div>
+
+                <button class="mx-5 my-3 icone float-right"  *ngIf="badge > 0" matBadge="{{badge}}" matBadgeColor="warn" mat-mini-fab  [routerLink]="['/carrinho']">
+                    <mat-icon >shopping_cart </mat-icon>
+                  </button>
+
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" [ngbCollapse]="isCollapsed">
+                 
                 <app-menu-login></app-menu-login>
       
             </div>

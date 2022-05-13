@@ -1,3 +1,4 @@
+import { Carrinho } from '../carrinho/models/carrinho';
 export class LocalStorageUtils {
     
     public obterUsuario() {
@@ -24,6 +25,22 @@ export class LocalStorageUtils {
 
     public salvarUsuario(user: string) {
         localStorage.setItem('webpedidos.user', JSON.stringify(user));
+    }
+
+
+    /* pedidos */
+
+    public salvarCarrinho(carrinho: Carrinho ) { 
+        localStorage.setItem('webpedidos.carrinho', JSON.stringify(carrinho));
+    }
+
+    public obterCarrinho():Carrinho {
+    let  produtos = localStorage.getItem('webpedidos.carrinho');
+      return  JSON.parse(produtos);
+    }
+
+    public limparCarrinho() {
+        localStorage.removeItem('webpedidos.carrinho');;
     }
 
 }
