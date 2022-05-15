@@ -14,6 +14,8 @@ export class MenuLoginComponent {
   email: string = "";
   nome : string = "";
   localStorageUtils = new LocalStorageUtils();
+  admin: boolean;
+
 
   constructor(private router: Router) {  }
 
@@ -23,8 +25,12 @@ export class MenuLoginComponent {
 
     if (this.user){
       this.email = this.user.email;
-        this.nome = this.user.nome;
+        this.nome = this.user.nome; 
+        this.admin = this.user.claims.find((x) => x.type == 'Produto')
+        ? true
+        : false;  
     }
+
     return this.token !== null;
   }
 
@@ -32,4 +38,7 @@ export class MenuLoginComponent {
     this.localStorageUtils.limparDadosLocaisUsuario();
     this.router.navigate(['/home']);
   }
+
+
+  
 }

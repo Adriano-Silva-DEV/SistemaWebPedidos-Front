@@ -1,16 +1,25 @@
+<div>
+
 <ul [ngSwitch]="usuarioLogado()" class="navbar-nav">
     <li *ngSwitchCase="false" class="nav-item" style="padding-right: 30px;">
         <button mat-button class="text-white" color="basic" [routerLink]="['/conta/login']"><span class="fas fa-sign-out-alt"></span> Entrar</button>
     </li>
-    <li *ngSwitchCase="false" class="nav-item">
+    <li *ngSwitchCase="false" class="nav-item m-1">
         <button mat-raised-button color="primary" [routerLink]="['/conta/cadastro']">Crie sua conta</button>
     </li>
 
     <li *ngSwitchCase="true" class="nav-item">
-        <a class="nav-link text-white" id="saudacaoUsuario" href="javascript:void(0)"> Olá, {{ nome | uppercase}}</a>
+        <a class="nav-link text-white" *ngIf="!admin" id="saudacaoUsuario" href="javascript:void(0)"> Olá, {{ nome | uppercase}}</a>
+        <a class="nav-link text-white"  [routerLink]="['/adm/produtos/listar-todos']" *ngIf="admin" > PAINEL ADMIN </a>
     </li>
+
     <li *ngSwitchCase="true" class="nav-item">
         <a class="nav-link text-white" href="javascript:void(0)" (click)="logout()">
             Sair <span class="fas fa-sign-out-alt"></span></a>
     </li>
 </ul>
+
+
+</div>
+
+
