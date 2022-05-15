@@ -1,5 +1,9 @@
-<app-menu> </app-menu>
+<app-menu [sobre]="sobre"> </app-menu>
 <div class="corpo-site container mt-23 shadow-lg  mb-5 bg-white rounded "> 
     <router-outlet> </router-outlet>
 </div>
-<app-footer class="m-1" [sobre]="sobre"> </app-footer>
+<app-footer class="" [sobre]="sobre"> </app-footer>
+
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="large" color="#6f87e0" type="ball-circus" [fullScreen]="true">
+    <p style="color: white"> Carregando </p>
+</ngx-spinner>

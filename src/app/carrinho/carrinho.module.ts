@@ -12,9 +12,10 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { DetalhesComponent } from './detalhes/detalhes.component';
 import { ProdutoModule } from '../produto/produto.module';
+import { BuscaComponent } from './busca/busca.component';
 
 @NgModule({
-  declarations: [CarrinhoComponent, CarrinhoAppComponent, DetalhesComponent],
+  declarations: [CarrinhoComponent, CarrinhoAppComponent, DetalhesComponent, BuscaComponent],
   imports: [
     CommonModule,
     CarrinhoRoutingModule,

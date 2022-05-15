@@ -17,4 +17,6 @@ export class Sobre {
       bairro: string;
       cidade: string;
       estado: string;
+      imagemUpload: string;
+      imagem1:  string;
 }

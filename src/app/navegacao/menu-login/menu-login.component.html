@@ -1,6 +1,6 @@
 <ul [ngSwitch]="usuarioLogado()" class="navbar-nav">
     <li *ngSwitchCase="false" class="nav-item" style="padding-right: 30px;">
-        <button mat-raised-button color="basic" [routerLink]="['/conta/login']"><span class="fas fa-sign-out-alt"></span> Entrar</button>
+        <button mat-button class="text-white" color="basic" [routerLink]="['/conta/login']"><span class="fas fa-sign-out-alt"></span> Entrar</button>
     </li>
     <li *ngSwitchCase="false" class="nav-item">
         <button mat-raised-button color="primary" [routerLink]="['/conta/cadastro']">Crie sua conta</button>

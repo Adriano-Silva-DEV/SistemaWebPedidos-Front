@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ProdutoService } from 'src/app/produto/services/produto.service';
 import { Produto } from '../../produto/models/produto';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { environment } from 'src/environments/environment';
+import { Sobre } from 'src/app/sobre/models/sobre.model';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,6 @@ import { environment } from 'src/environments/environment';
 })
 export class HomeComponent {
   produtos: Produto[];
-
   constructor(
     private produtoService: ProdutoService,
     private spinner: NgxSpinnerService
