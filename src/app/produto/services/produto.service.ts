@@ -31,6 +31,15 @@ export class ProdutoService extends BaseService {
                 );
     }
 
+    busca(id: string): Observable<[Produto]> {
+        return this.http
+            .get<Produto>(this.UrlServiceV1 + "/produtos/busca/" + id, super.ObterAuthHeaderJson())
+            .pipe(
+                map(this.extractData),
+                catchError(this.serviceError)
+                );
+    }
+
     obterPorFornecedor(id: string): Observable<[Produto]> {
         return this.http
             .get<Produto>(this.UrlServiceV1 + "/produtos/"+id+"/fornecedor", super.ObterAuthHeaderJson())

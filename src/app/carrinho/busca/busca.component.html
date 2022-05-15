@@ -1,0 +1,10 @@
+<app-menu-categoria class="m-3"> </app-menu-categoria>
+
+<div class="container-fluid main-container  ">
+    <div class="row text-center">
+        
+            <app-card-produto  *ngIf="produtos != null " [produtos]="produtos"> </app-card-produto>
+     
+            <h3 *ngIf="produtos == null "> Desculpe não existem produtos cadastrados para esta Categoria </h3>
+    </div>
+</div>

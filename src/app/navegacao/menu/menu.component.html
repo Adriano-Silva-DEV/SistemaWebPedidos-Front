@@ -1,16 +1,18 @@
 <header class="topo border-bottom  box-shadow bg-white">
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark menu-top">
-        <div class="container my-sm-3">
-            <a class="navbar-brand text-white " [routerLink]="['/home']">Meus Produtos</a>
+        <div class="container">
+            <a class="navbar-brand text-white " [routerLink]="['/home']">
+                <img class="img-logo" src="{{imagens}}/{{ sobre.imagem1 }}" >
+            </a>
             <button class="navbar-toggler border-0 text-buton-menu-top" type="button" (click)="isCollapsed = !isCollapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <app-menu-login></app-menu-login>
                 </button>
                 
 
                         <div class="input-group ml-5">
-                            <input type="text" class="form-control" />
+                            <input type="text" id="busca"  #busca class="form-control" />
                             <span class="input-group-btn">
-                              <button type="button" class="btn btn-default">
+                              <button (click)="buscar()" type="button" class="btn btn-default">
                                 <i class="fa fa-search text-white fa-lg "></i>
                               </button>
                             </span>

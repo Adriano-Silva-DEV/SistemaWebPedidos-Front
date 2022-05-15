@@ -14,7 +14,7 @@
 
             <ul class="row navbar-nav  my-2 flex-grow-1 justify-content-center">
                 <li class=" col-2 nav-item text-center  font-weight-bold text-justify" *ngFor="let categoria of categorias">
-                    <a class="nav-link2   btn-menu-cat " href="#">{{categoria.nome | uppercase}}<span class="sr-only">(Página atual)</span></a>
+                    <a class="nav-link2   btn-menu-cat " [routerLink]="['/adm/categoria/obter', categoria.id]" >{{categoria.nome | uppercase}} </a>
                    </li>
             </ul>
         </div>

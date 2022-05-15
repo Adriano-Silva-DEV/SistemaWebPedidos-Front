@@ -6,7 +6,7 @@ import { CategoriaRoutingModule } from './categoria.route';
 import { CustomFormsModule } from 'ng2-validation';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
+import {  RouterModule } from '@angular/router';
 import { NovoComponent } from './novo/novo.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { EditarComponent } from './editar/editar.component';
@@ -15,6 +15,7 @@ import { CategoriaService } from './services/categoriaService';
 import { CategoriaResolve } from './services/fornecedor.resolve';
 import { ProdutoModule } from '../produto/produto.module';
 import { MenuModule } from '../menu/menu.module';
+import { ObterComponent } from './obter/obter.component';
 
 
 
@@ -24,7 +25,8 @@ import { MenuModule } from '../menu/menu.module';
     CategoriaAppComponent,
     NovoComponent,
     EditarComponent,
-    ExcluirComponent
+    ExcluirComponent,
+    ObterComponent
   ],
   imports: [
     CommonModule,

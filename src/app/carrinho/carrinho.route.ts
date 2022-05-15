@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ProdutoResolve } from '../produto/services/produto.resolve';
+import { BuscaComponent } from './busca/busca.component';
 import { CarrinhoAppComponent } from './carrinho.app.component';
 import { CarrinhoComponent } from './carrinho/carrinho.component';
 import { DetalhesComponent } from './detalhes/detalhes.component';
@@ -14,7 +15,9 @@ const produtoRouterConfig: Routes = [
             },
             { path: 'detalhes/:id', component: DetalhesComponent,            
                 resolve: {produto: ProdutoResolve }     
-            }
+            },
+            { path: 'busca/:id', component: BuscaComponent,                   
+        }
         ]
     }
 ];

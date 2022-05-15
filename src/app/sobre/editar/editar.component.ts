@@ -22,6 +22,8 @@ import { StringUtils } from 'src/app/utils/string-utils';
 import { Sobre } from '../models/sobre.model';
 import { SobreService } from '../services/sobre.Service';
 import { Endereco } from '../../conta/models/usuario';
+import { Dimensions, ImageCroppedEvent, ImageTransform } from 'ngx-image-cropper';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-editar',
@@ -31,7 +33,7 @@ import { Endereco } from '../../conta/models/usuario';
 export class EditarComponent implements OnInit {
   @ViewChildren(FormControlName, { read: ElementRef })
   formInputElements: ElementRef[];
-
+  imagens: string = environment.imgUrl;
   sobre: Sobre;
   textoDocumento: string = '';
   errors: any[] = [];
@@ -40,6 +42,18 @@ export class EditarComponent implements OnInit {
   validationMessages: ValidationMessages;
   genericValidator: GenericValidator;
   displayMessage: DisplayMessage = {};
+
+  imageChangedEvent: any = '';
+  croppedImage: any = '';
+  canvasRotation = 0;
+  rotation = 0;
+  scale = 1;
+  showCropper = false;
+  containWithinAspectRatio = false;
+  transform: ImageTransform = {};
+  imagemURL: string;
+  imagemNome: string;
+  imgAtual: string;
 
   MASKS = utilsBr.MASKS;
   formResult: string = '';
@@ -166,8 +180,11 @@ export class EditarComponent implements OnInit {
       cidade: cidade,
       estado: estado,
       tipoDocumento: ['', [Validators.required]],
+      imagem: [''],
+      imagem1: ['']
     });
 
+    this.imgAtual = this.sobre.imagem1;
     this.preencherForm();
   }
 
@@ -191,6 +208,8 @@ export class EditarComponent implements OnInit {
       bairro: this.sobre.bairro,
       cidade: this.sobre.cidade,
       estado: this.sobre.estado,
+      imagem1: this.sobre.imagem1,
+
     });
 
   
@@ -269,6 +288,8 @@ export class EditarComponent implements OnInit {
       this.sobre.descricao = this.sobreForm.value.descricao;
       this.sobre.email = this.sobreForm.value.email;
 
+      this.sobre.imagemUpload = this.croppedImage.split(',')[1];
+      this.sobre.imagem1 = this.imagemNome;
 
       this.sobre.rua = this.sobreForm.value.rua;
       this.sobre.numero = this.sobreForm.value.numero;
@@ -317,5 +338,26 @@ export class EditarComponent implements OnInit {
   processarFalha(fail: any) {
     this.errors = fail.error.errors;
     this.toastr.error('Ocorreu um erro!', 'Ops');
+  }
+
+
+  fileChangeEvent(event: any): void {
+    this.imageChangedEvent = event;
+    this.imagemNome = event.currentTarget.files[0].name;
+  }
+  imageCropped(event: ImageCroppedEvent) {
+    this.croppedImage = event.base64;
+  }
+  imageLoaded() {
+    this.showCropper = true;
+  }
+  cropperReady(sourceImageDimensions: Dimensions) {
+    console.log('Cropper ready', sourceImageDimensions);
+  }
+  loadImageFailed() {
+    this.errors.push('O formato do arquivo ' + this.imagemNome + ' não é aceito.');
+  }
+  excluirImg(){
+    this.imgAtual = null;
   }
 }

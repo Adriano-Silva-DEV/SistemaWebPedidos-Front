@@ -7,6 +7,7 @@ import { EditarComponent } from './editar/editar.component';
 import { ExcluirComponent } from './excluir/excluir.component';
 import { ListarComponent } from './listar/listar.component';
 import { NovoComponent } from './novo/novo.component';
+import { ObterComponent } from './obter/obter.component';
 import { CategoriaResolve } from './services/fornecedor.resolve';
 
 const contaRouterConfig: Routes = [
@@ -15,6 +16,10 @@ const contaRouterConfig: Routes = [
     component: CategoriaAppComponent,
     children: [
       {
+        path: 'obter/:id',
+        component: ObterComponent,
+      },
+       {
         path: 'novo',
         component: NovoComponent,
         canActivate: [ProdutoGuard],
