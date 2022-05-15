@@ -37,7 +37,7 @@ html {
 
   .topo {
     z-index: -1 !important;
-    height: 180px;
+    height: 200px;
     background: rgb(181, 74, 50);
     background: linear-gradient(
       90deg,
