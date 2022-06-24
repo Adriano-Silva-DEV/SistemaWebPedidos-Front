@@ -6,6 +6,7 @@ import { utils } from 'protractor';
 import { CurrencyUtils } from 'src/app/utils/currency-utils';
 import { StringUtils } from '../../utils/string-utils';
 import { Router } from '@angular/router';
+import { meioPagamento } from '../models/meio-pagamento';
 
 @Component({
   selector: 'app-carrinho',
@@ -18,6 +19,34 @@ export class CarrinhoComponent implements OnInit {
   localStorage = new LocalStorageUtils();
   currencyUtils = new CurrencyUtils();
   totalPedido: any;
+  meiosPagamento: meioPagamento[] = [
+    {
+      id: 0,
+      nome: 'PIX',
+      selecionado: false,
+      numMaxParcelamento: 1,
+      valorMinParcela: 9999999999,
+      img: 'https://user-images.githubusercontent.com/33992396/99478353-00e4d600-2933-11eb-8228-4bafe8571507.png',
+    },
+    {
+      id: 1,
+      nome: 'Cartão VISA',
+      selecionado: false,
+      numMaxParcelamento: 5,
+      valorMinParcela: 50,
+      img: 'https://w7.pngwing.com/pngs/371/4/png-transparent-visa-debit-card-credit-card-logo-mastercard-visa-text-trademark-logo.png',
+    },
+    {
+      id: 1,
+      nome: 'Cartão Master',
+      selecionado: false,
+      numMaxParcelamento: 10,
+      valorMinParcela: 20,
+      img: 'https://logosmarcas.net/wp-content/uploads/2020/09/MasterCard-Logo-1990-1996.png',
+    },
+  ];
+  meioPagamento;
+
   constructor(private router: Router) {}
 
   ngOnInit(): void {
@@ -30,10 +59,9 @@ export class CarrinhoComponent implements OnInit {
 
     if (carrinho) {
       this.itensCarrinho = carrinho.itemCarrinho;
-    }else{
+    } else {
       this.itensCarrinho = null;
     }
-
   }
 
   processarPedido() {
@@ -47,11 +75,10 @@ export class CarrinhoComponent implements OnInit {
         .reduce(function (soma, i) {
           return soma + i;
         });
-    }else{
+    } else {
       this.totalPedido = 0;
       this.router.navigate(['/home']);
     }
-
   }
 
   adicionarItem(id: string) {
@@ -61,9 +88,7 @@ export class CarrinhoComponent implements OnInit {
         (p) => p.produto.id == id
       );
 
-      let itemTela = this.itensCarrinho.find(
-        (p) => p.produto.id == id
-      );
+      let itemTela = this.itensCarrinho.find((p) => p.produto.id == id);
 
       if (itemAdicionado) {
         itemAdicionado.quantidade++;
@@ -72,7 +97,6 @@ export class CarrinhoComponent implements OnInit {
         this.processarPedido();
       }
     }
-    
   }
 
   subtrairItem(id: string) {
@@ -82,14 +106,12 @@ export class CarrinhoComponent implements OnInit {
         (p) => p.produto.id == id
       );
 
-     let itemTela = this.itensCarrinho.find(
-      (p) => p.produto.id == id
-    );
+      let itemTela = this.itensCarrinho.find((p) => p.produto.id == id);
 
       if (itemAdicionado) {
-        if(itemAdicionado.quantidade > 1){        
-           itemAdicionado.quantidade--;
-           itemTela.quantidade--;
+        if (itemAdicionado.quantidade > 1) {
+          itemAdicionado.quantidade--;
+          itemTela.quantidade--;
         }
 
         this.localStorage.salvarCarrinho(carrinho);
@@ -98,17 +120,30 @@ export class CarrinhoComponent implements OnInit {
     }
   }
 
-  removerItem(id: string){
+  removerItem(id: string) {
     let carrinho = this.localStorage.obterCarrinho();
     if (carrinho) {
-      let itens = carrinho.itemCarrinho.filter(
-        (p) => p.produto.id != id
-      );
-       carrinho.itemCarrinho = itens;
-        this.localStorage.limparCarrinho();
-        this.localStorage.salvarCarrinho(carrinho);
-        this.processarPedido();
-        this.popularTabela();
+      let itens = carrinho.itemCarrinho.filter((p) => p.produto.id != id);
+      carrinho.itemCarrinho = itens;
+      this.localStorage.limparCarrinho();
+      this.localStorage.salvarCarrinho(carrinho);
+      this.processarPedido();
+      this.popularTabela();
     }
+  }
+
+  calcularParcelamento(valor, meio) {
+    let parcelamento = valor / meio.valorMinParcela;
+
+    if (parcelamento < 1) {
+      return { totalParcela: 1, valor: valor };
+    }
+
+    parcelamento = Math.trunc(parcelamento);
+
+    if (parcelamento > meio.numMaxParcelamento)
+      parcelamento = meio.numMaxParcelamento;
+
+    return { totalParcela: parcelamento, valor: valor / parcelamento };
   }
 }

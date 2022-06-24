@@ -1,0 +1,50 @@
+
+<app-menu-categoria class="m-3"> </app-menu-categoria>
+
+<h1 class="text-center m-3 titulo">
+  Confirme seu pedido!
+</h1>
+
+<br>
+
+<div class="row">
+  
+  <div class="col-12 p-5"> 
+    <mat-card class="total-carrinho sucess">
+      <h2>  Itens no <span class="vermelho">Pedido</span> </h2>
+      <br>
+      
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">QUANTIDADE</th>
+          <th scope="col">ITEM</th>
+          <th scope="col">TOTAL</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of itensCarrinho" >
+          <td>{{ item.quantidade }}</td>
+          <td>{{ item.produto.nome }}</td>
+          <td>{{ totalItem(item.quantidade , item.produto.precoVenda)  | currency:'BRL':true }}</td>
+        </tr>
+        <tr>
+          
+      </tbody>
+    </table>
+
+     </mat-card>   
+  </div>
+
+   <div class="col-12  p-5"> 
+    <mat-card class="total-carrinho sucess">
+  
+      <h2>  Endereço para <span class="vermelho">Entrega </span></h2>
+    </mat-card>
+ 
+    </div>
+
+
+
+</div>
