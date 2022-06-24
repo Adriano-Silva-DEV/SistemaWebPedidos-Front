@@ -5,38 +5,39 @@
     <div class="row">
         <div class="col-12 col-sm-6 my-5">
             <div class="row text-center">
-                <mat-card class="col-12 red my-1" *ngFor="let item of itensCarrinho">
+                <mat-card class="col-12 red my-1 itens-carrinho" *ngFor="let item of itensCarrinho">
 
                     <div class="row">
                         <div class="col-4">
-                            <span class="qnt "> Quantidade </span> <br> <br> 
+                            <span class="qnt "> Quantidade </span> <br> <br>
                             <span class="qnt-item my-3"> {{ item.quantidade }} </span>
-                            <br>                    
-                            <button *ngIf="item.quantidade > 1" mat-mini-fab color="accent" aria-label=""
+                            <br>
+                            <button *ngIf="item.quantidade > 1" mat-mini-fab color="primary" aria-label=""
                                 (click)="subtrairItem(item.produto.id)">
                                 <mat-icon>exposure_neg_1</mat-icon>
                             </button> &nbsp;
-                            <button mat-mini-fab color="accent" aria-label="" (click)="adicionarItem(item.produto.id)">
+                            <button mat-mini-fab color="primary" aria-label="" (click)="adicionarItem(item.produto.id)">
                                 <mat-icon>plus_one</mat-icon>
                             </button>
                         </div>
-                       
-                        <div class="col-4">
+
+                        <div class="col-2">
 
                             <img class="img-produto rounded mx-auto d-block card-img" title=""
                                 src="{{imagens}}/{{ item.produto.imagem1 }}"
                                 onerror="this.src = 'https://cdn.neemo.com.br/uploads/settings_webdelivery/logo/996/notfound.png' "
-                                 [routerLink]="['/carrinho/detalhes',item.produto.id]">
+                                [routerLink]="['/carrinho/detalhes',item.produto.id]">
                             <br>
-                                              
-                           
+
+
                         </div>
-                        <div class="col-4">
-                            <h3> {{ item.produto.nome | uppercase }} </h3>
+                        <div class="col-6">
+                            <span class="nome-produto"> {{ item.produto.nome | uppercase }} </span>
                             <br>
-                            <button mat-raised-button color="warn"
-                            (click)="removerItem(item.produto.id)">Remover</button>
-                                   
+
+                            <button class="buton-remove" mat-raised-button color="warn"
+                                (click)="removerItem(item.produto.id)">Remover</button>
+
                         </div>
                     </div>
                 </mat-card>
@@ -45,7 +46,41 @@
         </div>
         <div class="col-12 col-sm-6 my-5 " *ngIf="this.totalPedido != 0">
             <mat-card class="total-carrinho sucess">
-                TOTAL PEDIDO: {{ totalPedido | currency:'BRL':true }}
+                <br>
+                <span class=""> TOTAL PEDIDO: <span class="totalPedido"> {{ totalPedido | currency:'BRL':true
+                        }}</span> </span>
+                <br>
+                <br>
+                <span class="meio-pagamento">
+                   Meios de pagamento
+
+                    <br>                       
+                        <div *ngFor="let meio of meiosPagamento" class=" m-2" >
+                            <div *ngIf="meio.valorMinParcela < totalPedido || meio.id == 0">    
+                            <td> 
+                                    <img  class="img-icon-meio-pagamento"  [src]="meio.img" alt="">
+                                    &nbsp; 
+                                </td>
+                                <td>
+                                    {{
+                                    meio.nome }}
+                                </td>
+                                <td>
+                                    <span>
+                                        &nbsp;   em até
+                                        {{ calcularParcelamento(totalPedido, meio).totalParcela }}
+                                        x de
+
+                                        {{ calcularParcelamento(totalPedido, meio).valor | currency:'BRL':true }}
+                                    </span>
+                                </td>    
+                            </div>     
+                        </div>
+                </span>
+
+                <br>
+                <button mat-flat-button  color="primary">Finalizar Pedido</button>
+
             </mat-card>
         </div>
 
@@ -57,3 +92,24 @@
         </div>
     </div>
 </div>
+
+<!-- 
+<mat-radio-group (ngModel)="meioPagamento" aria-labelledby="example-radio-group-label">
+                            
+    <mat-radio-button *ngFor="let meio of meiosPagamento" class="radio-buton m-1" [value]="meio.id">
+
+            <td>
+                {{
+                meio.nome }}
+            </td>
+            <td>
+                <span>
+                    &nbsp;   em até
+                    {{ calcularParcelamento(totalPedido, meio).totalParcela }}
+                    x de
+
+                    {{ calcularParcelamento(totalPedido, meio).valor | currency:'BRL':true }}
+                </span>
+            </td>         
+    </mat-radio-button>
+</mat-radio-group> -->

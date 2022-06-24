@@ -13,9 +13,18 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { DetalhesComponent } from './detalhes/detalhes.component';
 import { ProdutoModule } from '../produto/produto.module';
 import { BuscaComponent } from './busca/busca.component';
+import {MatRadioModule} from '@angular/material/radio';
+import { FormsModule } from '@angular/forms';
+import { PedidoComponent } from './pedido/pedido.component';
 
 @NgModule({
-  declarations: [CarrinhoComponent, CarrinhoAppComponent, DetalhesComponent, BuscaComponent],
+  declarations: [
+    CarrinhoComponent,
+    CarrinhoAppComponent,
+    DetalhesComponent,
+    BuscaComponent,
+    PedidoComponent,
+  ],
   imports: [
     CommonModule,
     CarrinhoRoutingModule,
@@ -26,7 +35,12 @@ import { BuscaComponent } from './busca/busca.component';
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
-    ProdutoModule
+    ProdutoModule,
+    MatRadioModule,
+    FormsModule
   ],
+  providers:[
+    PedidoComponent
+  ]
 })
 export class CarrinhoModule {}

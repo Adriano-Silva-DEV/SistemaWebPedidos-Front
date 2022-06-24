@@ -4,6 +4,7 @@ import { DadosUsuario, Usuario } from "../models/usuario";
 import { Observable } from 'rxjs';
 import {  map, catchError } from 'rxjs/operators';
 import { BaseService } from '../../services/base.service';
+import { Endereco } from '../../fornecedor/models/endereco';
 
 @Injectable()
 export class ContaService extends BaseService{
@@ -32,4 +33,13 @@ return response;
       );
       return response;
   }
+ 
+  obterEnderecoClientePorId(id: string): Observable<Endereco> {
+    return this.http
+        .get<Endereco>(this.UrlServiceV1 + "/produtos/" + id, super.ObterAuthHeaderJson())
+        .pipe(
+            map(this.extractData),
+            catchError(this.serviceError)
+            );
+} 
 }

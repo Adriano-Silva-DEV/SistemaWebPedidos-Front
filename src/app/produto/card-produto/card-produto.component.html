@@ -1,38 +1,39 @@
 <div class="row d-flex justify-content-sm-center">
-   
-   
+
+
     <mat-card class="card2 m-2 my-3 red col-12 col-md-2 card-prod " *ngFor="let produto of produtos; let i = index">
 
         <img class="img-card-roduto rounded mx-auto d-block card-img" title="Ver detalhes do produto"
             (mouseover)='temp[i] = true' (mouseout)='temp[i] = false' src="{{imagens}}/{{ produto.imagem1 }}"
-            onerror="this.src = 'https://cdn.neemo.com.br/uploads/settings_webdelivery/logo/996/notfound.png' " 
+            onerror="this.src = 'https://cdn.neemo.com.br/uploads/settings_webdelivery/logo/996/notfound.png' "
             [routerLink]="['/carrinho/detalhes',produto.id]">
         <div class="">
             <!--    <div *ngIf="temp_carrinho[i]" class="card-carrinho mt-3"> ADICIONAR PRODUTO AO CARRINHO
         </div>
          -->
-            <div *ngIf="temp[i]" class="card-carrinho7 p-32 m-3"> 
-               
-                <button mat-raised-button color="warn" > Abrir Detalhes
+            <div *ngIf="temp[i]" class="card-carrinho7 p-32 m-3">
+
+                <button mat-raised-button color="warn"> Abrir Detalhes
                     <br>
                     <i class="fa-solid fa-tags img-carrinho"></i></button>
-          
+
             </div>
 
             <div class="card-body5 my-1 p-2" *ngIf="!temp[i] && !temp_carrinho[i]">
-             
-              <!--   <button mat-raised-button4 >{{ produto.nome }} <br>
+
+                <!--   <button mat-raised-button4 >{{ produto.nome }} <br>
                     <span class="preco"> {{produto.precoVenda | currency:'BRL':true }} </span></button>
  -->
-                <div class="card-title5 desc-card-produto"   [routerLink]="['/carrinho/detalhes',produto.id]">
-                    {{ produto.nome }} <br> 
+                <div class="card-title5 desc-card-produto" [routerLink]="['/carrinho/detalhes',produto.id]">
+                    {{ produto.nome }} <br>
                     <span class="preco "> {{produto.precoVenda | currency:'BRL':true }} </span>
-                </div> 
-           
+                </div>
+
             </div>
 
         </div>
-        <button mat-raised-button color="warn" (click)="adcionarCarrinho(produto)"><i class="fa-solid fa-cart-shopping "></i> Carrinho</button>
+        <button mat-raised-button color="warn" (click)="adcionarCarrinho(produto)"><i
+                class="fa-solid fa-cart-shopping "></i> Comprar</button>
         <!-- <div class="card-carrinho mt-1 p-1 img-carrinho" (click)="adcionarCarrinho(produto)" >
             <i class="fa-solid fa-cart-shopping "></i>
         </div> -->
