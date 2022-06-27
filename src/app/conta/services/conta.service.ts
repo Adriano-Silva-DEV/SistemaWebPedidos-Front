@@ -34,9 +34,10 @@ return response;
       return response;
   }
  
-  obterEnderecoClientePorId(id: string): Observable<Endereco> {
+
+  obterEnderecoCliente(): Observable<Endereco> {
     return this.http
-        .get<Endereco>(this.UrlServiceV1 + "/produtos/" + id, super.ObterAuthHeaderJson())
+        .get<Endereco>(this.UrlServiceV1 + "/endereco", super.ObterAuthHeaderJson())
         .pipe(
             map(this.extractData),
             catchError(this.serviceError)

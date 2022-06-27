@@ -2,33 +2,36 @@
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark menu-top">
         <div class="container">
             <a class="navbar-brand text-white " [routerLink]="['/home']">
-                <img class="img-logo" src="{{imagens}}/{{ sobre.imagem1 }}" >
+                <img class="img-logo" src="{{imagens}}/{{ sobre.imagem1 }}">
             </a>
-            <button class="navbar-toggler border-0 text-buton-menu-top" type="button" (click)="isCollapsed = !isCollapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler border-0 text-buton-menu-top" type="button"
+                (click)="isCollapsed = !isCollapsed" data-toggle="collapse" data-target=".navbar-collapse"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <app-menu-login></app-menu-login>
-                </button>
-                
+            </button>
 
-                        <div class="input-group ml-5">
-                            <input type="text" id="busca"  #busca class="form-control" />
-                            <span class="input-group-btn">
-                              <button (click)="buscar()" type="button" class="btn btn-default">
-                                <i class="fa fa-search text-white fa-lg "></i>
-                              </button>
-                            </span>
-                           
-                          </div>
 
-                          <a class="nav-link text-white" id="saudacaoUsuario" href="javascript:void(0)"> &nbsp; </a>
+            <div class="input-group ml-5">
+                <input type="text" id="busca" #busca class="form-control" />
+                <span class="input-group-btn">
+                    <button (click)="buscar()" type="button" class="btn btn-default">
+                        <i class="fa fa-search text-white fa-lg "></i>
+                    </button>
+                </span>
 
-                <button class="mx-5 my-3 icone float-right"  *ngIf="badge > 0" matBadge="{{badge}}" matBadgeColor="warn" mat-mini-fab  [routerLink]="['/carrinho']">
-                    <mat-icon >shopping_cart </mat-icon>
-                  </button>
+            </div>
 
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" [ngbCollapse]="isCollapsed">
-                 
+            <a class="nav-link text-white" id="saudacaoUsuario" href="javascript:void(0)"> &nbsp; </a>
+
+            <button class="mx-5 my-3 icone float-right" *ngIf="badge > 0" matBadge="{{badge}}" matBadgeColor="warn"
+                mat-mini-fab [routerLink]="['/carrinho']">
+                <mat-icon>shopping_cart </mat-icon>
+            </button>
+
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" [ngbCollapse]="isCollapsed">
+
                 <app-menu-login></app-menu-login>
-      
+
             </div>
         </div>
     </nav>

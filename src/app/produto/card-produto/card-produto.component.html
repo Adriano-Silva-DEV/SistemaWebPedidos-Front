@@ -22,8 +22,7 @@
             <div class="card-body5 my-1 p-2" *ngIf="!temp[i] && !temp_carrinho[i]">
 
                 <!--   <button mat-raised-button4 >{{ produto.nome }} <br>
-                    <span class="preco"> {{produto.precoVenda | currency:'BRL':true }} </span></button>
- -->
+                    <span class="preco"> {{produto.precoVenda | currency:'BRL':true }} </span></button>-->
                 <div class="card-title5 desc-card-produto" [routerLink]="['/carrinho/detalhes',produto.id]">
                     {{ produto.nome }} <br>
                     <span class="preco "> {{produto.precoVenda | currency:'BRL':true }} </span>

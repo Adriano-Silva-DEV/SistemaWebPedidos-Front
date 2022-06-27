@@ -7,6 +7,7 @@ import { CurrencyUtils } from 'src/app/utils/currency-utils';
 import { StringUtils } from '../../utils/string-utils';
 import { Router } from '@angular/router';
 import { meioPagamento } from '../models/meio-pagamento';
+import { MeioPagamentoService } from '../service/Forma-Pagamento.Service';
 
 @Component({
   selector: 'app-carrinho',
@@ -19,35 +20,10 @@ export class CarrinhoComponent implements OnInit {
   localStorage = new LocalStorageUtils();
   currencyUtils = new CurrencyUtils();
   totalPedido: any;
-  meiosPagamento: meioPagamento[] = [
-    {
-      id: 0,
-      nome: 'PIX',
-      selecionado: false,
-      numMaxParcelamento: 1,
-      valorMinParcela: 9999999999,
-      img: 'https://user-images.githubusercontent.com/33992396/99478353-00e4d600-2933-11eb-8228-4bafe8571507.png',
-    },
-    {
-      id: 1,
-      nome: 'Cartão VISA',
-      selecionado: false,
-      numMaxParcelamento: 5,
-      valorMinParcela: 50,
-      img: 'https://w7.pngwing.com/pngs/371/4/png-transparent-visa-debit-card-credit-card-logo-mastercard-visa-text-trademark-logo.png',
-    },
-    {
-      id: 1,
-      nome: 'Cartão Master',
-      selecionado: false,
-      numMaxParcelamento: 10,
-      valorMinParcela: 20,
-      img: 'https://logosmarcas.net/wp-content/uploads/2020/09/MasterCard-Logo-1990-1996.png',
-    },
-  ];
+  meiosPagamento: meioPagamento[] = this.meioPagamentoService.meiosPagamento;
   meioPagamento;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private meioPagamentoService:  MeioPagamentoService) {}
 
   ngOnInit(): void {
     this.popularTabela();
@@ -133,17 +109,6 @@ export class CarrinhoComponent implements OnInit {
   }
 
   calcularParcelamento(valor, meio) {
-    let parcelamento = valor / meio.valorMinParcela;
-
-    if (parcelamento < 1) {
-      return { totalParcela: 1, valor: valor };
-    }
-
-    parcelamento = Math.trunc(parcelamento);
-
-    if (parcelamento > meio.numMaxParcelamento)
-      parcelamento = meio.numMaxParcelamento;
-
-    return { totalParcela: parcelamento, valor: valor / parcelamento };
+   return this.meioPagamentoService.calcularParcelamento(valor, meio);
   }
 }

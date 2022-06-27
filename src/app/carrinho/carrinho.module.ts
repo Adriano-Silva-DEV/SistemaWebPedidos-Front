@@ -16,6 +16,10 @@ import { BuscaComponent } from './busca/busca.component';
 import {MatRadioModule} from '@angular/material/radio';
 import { FormsModule } from '@angular/forms';
 import { PedidoComponent } from './pedido/pedido.component';
+import { ContaModule } from '../conta/conta.module';
+import { MeioPagamentoService } from './service/Forma-Pagamento.Service';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -37,10 +41,15 @@ import { PedidoComponent } from './pedido/pedido.component';
     MatCardModule,
     ProdutoModule,
     MatRadioModule,
-    FormsModule
+    FormsModule,
+    ContaModule,
+    MatExpansionModule,
+    MatFormFieldModule
+    
   ],
   providers:[
-    PedidoComponent
+    PedidoComponent,
+    MeioPagamentoService
   ]
 })
 export class CarrinhoModule {}

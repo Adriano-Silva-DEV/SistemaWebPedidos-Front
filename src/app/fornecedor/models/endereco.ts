@@ -1,6 +1,6 @@
 export class Endereco {
     id: string;
-    logradouro: string;
+    rua: string;
     numero: string;
     complemento: string;
     bairro: string;
