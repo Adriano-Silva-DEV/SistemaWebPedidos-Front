@@ -52,34 +52,33 @@
                 <br>
                 <br>
                 <span class="meio-pagamento">
-                   Meios de pagamento
+                    Meios de pagamento
 
-                    <br>                       
-                        <div *ngFor="let meio of meiosPagamento" class=" m-2" >
-                            <div *ngIf="meio.valorMinParcela < totalPedido || meio.id == 0">    
-                            <td> 
-                                    <img  class="img-icon-meio-pagamento"  [src]="meio.img" alt="">
-                                    &nbsp; 
-                                </td>
-                                <td>
-                                    {{
-                                    meio.nome }}
-                                </td>
-                                <td>
-                                    <span>
-                                        &nbsp;   em até
-                                        {{ calcularParcelamento(totalPedido, meio).totalParcela }}
-                                        x de
-
-                                        {{ calcularParcelamento(totalPedido, meio).valor | currency:'BRL':true }}
-                                    </span>
-                                </td>    
-                            </div>     
+                    <br>
+                    <div *ngFor="let meio of meiosPagamento" class=" m-2">
+                        <div *ngIf="meio.valorMinParcela < totalPedido || meio.id == 0">
+                            <td>
+                                <img class="img-icon-meio-pagamento" [src]="meio.img" alt="">
+                                &nbsp;
+                            </td>
+                            <td>
+                                {{
+                                meio.nome }}
+                            </td>
+                            <td>
+                                <span>
+                                    &nbsp; em até
+                                    {{ calcularParcelamento(totalPedido, meio).totalParcela }}
+                                    x de
+                                    {{ calcularParcelamento(totalPedido, meio).valor | currency:'BRL':true }}
+                                </span>
+                            </td>
                         </div>
+                    </div>
                 </span>
 
                 <br>
-                <button mat-flat-button  color="primary">Finalizar Pedido</button>
+                <button mat-flat-button [routerLink]="['/carrinho/pedido']" color="primary">Finalizar Pedido</button>
 
             </mat-card>
         </div>

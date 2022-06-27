@@ -1,8 +1,72 @@
 .titulo {
-    font-size: 25px;
-    color: rgb(74, 40, 196);
+    font-size: 50px;
+    color: rgb(187, 44, 25);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 .vermelho {
     color: rgb(218, 68, 68);
 }
+
+
+  
+  .total-carrinho {
+    width: 100%;
+    font-size: 15px;
+    min-height: 240px;
+  }
+  
+  .meio-pagamento {
+    font-size: 15px;
+    color: rgb(46, 46, 46);
+  }
+  
+  .radio-buton {
+    display: inline;
+  }
+  
+  .totalPedido {
+    color: #1db82a;
+  }
+  
+  .img-icon-meio-pagamento {
+    width: 30px;
+    height: 25px;
+  }
+  
+  
+  .qnt {
+    font-size: 15px;
+    font-family: "Times New Roman", Times, serif;
+    color: crimson;
+  }
+  
+  .red {
+    border-left: 3px solid #f74756;
+  }
+  
+  .sucess {
+    border-left: 3px solid #2eb114;
+  }
+  
+  .qnt-item {
+    font-size: 35px;
+    font-family: "Times New Roman", Times, serif;
+    color: crimson;
+  }
+  
+  
+  .itens-carrinho {
+    min-height: 120px;
+  }
+  
+
+  .mat-form-field + .mat-form-field {
+    margin-left: 8px;
+  }
+
+  :host {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }

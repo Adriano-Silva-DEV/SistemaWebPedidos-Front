@@ -9,7 +9,7 @@ import { Fornecedor } from "src/app/fornecedor/models/fornecedor";
 import { Endereco } from '../../fornecedor/models/endereco';
 
 @Injectable()
-export class ProdutoService extends BaseService {
+export class PedidoService extends BaseService {
 
     constructor(private http: HttpClient) { super() }
 

@@ -35,6 +35,7 @@ export class MenuComponent implements OnInit {
     setInterval(() => {
       this.badge = this.localStorage.obterCarrinho().itemCarrinho.length;
     }, 1000);
+ this.sobre = new Sobre();
   }
 
   buscar() {
