@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from './navegacao/home/home.component';
 import { NotFoundComponent } from './navegacao/not-found/not-found.component';
+import { FaleConoscoComponent } from './fale-conosco/fale-conosco.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -33,9 +34,14 @@ const routes: Routes = [
       .then(m => m.SobreModule)
   },
   {
-    path: 'carrinho',
+    path: 'page',
     loadChildren: () => import('./carrinho/carrinho.module')
       .then(m => m.CarrinhoModule)
+  },
+  {
+    path: 'fale-conosco',
+    loadChildren: () => import('./fale-conosco/fale-conosco.module')
+      .then(m => m.FaleConoscoModule)
   },
   { path: 'nao-encontado', component: NotFoundComponent },
   { path: '**', component: NotFoundComponent },

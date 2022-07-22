@@ -1,17 +1,19 @@
 @media (min-width: 0px) {
     .card-prod {
-      width: 180px !important;
-      height: 350px !important;
+      width: 97% !important;
       cursor: pointer;
     }
-  
+    .card-title5{
+      margin: 8px !important;
+    }
     .card-img {
       width: 180px !important;
       height: 180px !important;
       transition: all 0.3s ease-out;
-     
     }
-  
+  .comprar{
+    margin: 8px !important;
+  }
     .card-img:hover {
       width: 180px !important;
       height: 180px !important;
@@ -44,9 +46,13 @@
   
     .desc-card-produto {
       text-decoration: none;
+      min-height: 35px !important;
     }
   }
   
+  .nome{
+    min-width: 5px;
+  }
   
   .card-body5 {
     height: 80px;

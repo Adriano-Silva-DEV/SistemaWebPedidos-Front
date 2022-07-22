@@ -20,14 +20,14 @@ export class CarrinhoComponent implements OnInit {
   localStorage = new LocalStorageUtils();
   currencyUtils = new CurrencyUtils();
   totalPedido: any;
-  meiosPagamento: meioPagamento[] = this.meioPagamentoService.meiosPagamento;
-  meioPagamento;
-
+  meiosPagamento: meioPagamento[];
+  meioPagamento: any;
   constructor(private router: Router, private meioPagamentoService:  MeioPagamentoService) {}
 
   ngOnInit(): void {
     this.popularTabela();
     this.processarPedido();
+    this.obterMeiosPagamento();
   }
 
   popularTabela() {
@@ -111,4 +111,10 @@ export class CarrinhoComponent implements OnInit {
   calcularParcelamento(valor, meio) {
    return this.meioPagamentoService.calcularParcelamento(valor, meio);
   }
+
+  async obterMeiosPagamento(){
+    this.meiosPagamento = await this.meioPagamentoService.obterTodos().toPromise();
+
+    console.log(this.meiosPagamento);
+   }
 }

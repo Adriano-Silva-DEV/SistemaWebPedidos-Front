@@ -1,112 +1,158 @@
-<app-menu-categoria class="m-3"> </app-menu-categoria>
+<div class="container">
+  <app-menu-categoria class="m-3"> </app-menu-categoria>
 
-<h1 class="text-center m-3 titulo">
-  Confirme seu pedido!
-</h1>
+  <h1 class=" m-3 titulo text-center ">
+    Confirme seu pedido!
+  </h1>
+  <br>
+  <br>
 
-<br>
+  <div class="row justify-content-md-center">
 
-<div class="row">
-
-  <div class="col-12 p-5">
-    <mat-card class="total-carrinho sucess">
-      <h3> ITENS NO <span class="vermelho">PEDIDO</span> </h3>
-      <br>
+    <div class="col-12 m-1">
+      <mat-card class="total-carrinho sucess">
+        <h3 class="text-center"> Meus <span class="vermelho">Produtos</span> </h3>
+        <br>
 
 
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">QUANTIDADE</th>
-            <th scope="col">ITEM</th>
-            <th scope="col">TOTAL</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of itensCarrinho">
-            <td>{{ item.quantidade }}</td>
-            <td>{{ item.produto.nome }}</td>
-            <td>{{ totalItem(item.quantidade , item.produto.precoVenda) | currency:'BRL':true }}</td>
-          </tr>
-          <tr>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col-1">Quantidade</th>
+              <th scope="col-2"> </th>
+              <th scope="col-7">Produto</th>
+              <th scope="col-2">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="table-produto" *ngFor="let item of itensCarrinho"
+              [routerLink]="['/page/detalhes',item.produto.id]">
+              <td class="id">{{ item.quantidade }}</td>
+              <td class="img" [routerLink]="['/page/detalhes',item.produto.id]">
+                <img claass="img-thumbnail rounded-right" src="{{imagens}}/{{ item.produto.imagem1 }}"
+                  onerror="this.src = 'https://cdn.neemo.com.br/uploads/settings_webdelivery/logo/996/notfound.png' "
+                  style="width: 30px; height: 40px">
+              </td>
+              <td class="nome">
+                {{ item.produto.nome }}
+              </td>
+              <td class="quant">{{ totalItem(item.quantidade , item.produto.precoVenda) | currency:'BRL':true }}</td>
+            </tr>
+            <tr>
+          </tbody>
+        </table>
+      </mat-card>
+    </div>
 
-        </tbody>
-      </table>
+    <div class="col-12 col-sm-12 ">
+      <mat-card class="total-carrinho sucess p-5">
 
-    </mat-card>
+        <div class="row">
+          <h3 class="text-center col-12"> ENEDERECO PARA <span class="vermelho"> ENTREGA </span></h3>
+          <div class=" col-sm-3 text-center">
+            <img claass="img-thumbnail  rounded mx-auto d-block" src="{{imagens}}/entregador.png"
+              onerror="this.src = 'https://cdn.neemo.com.br/uploads/settings_webdelivery/logo/996/notfound.png' "
+              style="width: 150px; height: 150px">
+          </div>
+          <div class="col-12 col-sm-4 p-5">
+            <div class="text-center">
+              Rua: <span class="vermelho text-uppercase">{{ enderecoCliente.rua }} </span>
+              Nº: <span class="vermelho text-uppercase">{{ enderecoCliente.numero }} </span> <br>
+              Bairro: <span class="vermelho text-uppercase">{{ enderecoCliente.bairro }} </span> <br>
+              Cidade: <span class="vermelho text-uppercase">{{ enderecoCliente.cidade }} </span> -
+              <span class="vermelho text-uppercase"> {{ enderecoCliente.estado }} </span>
+            </div>
+          </div>
+        </div>
+
+
+      </mat-card>
+
+    </div>
+
+    <div class="col-12 col-sm-12 m-1">
+      <mat-card class="total-carrinho sucess p-5">
+
+        <h3 class="text-center"> FORMA DE <span class="vermelho">PAGAMENTO </span></h3>
+
+        <div class="row">
+          <div class="col-12 col-sm-6">
+
+            <mat-accordion>
+
+              <mat-expansion-panel hideToggle *ngFor="let meio of meiosPagamento">
+                <mat-expansion-panel-header
+                  *ngIf="meio.valorMinParcela < totalPedido || meio.valorMinParcela == 999999999"
+                  (click)="pegarFormaPagamento(meio)">
+                  <mat-panel-title>
+                    <img class="img-icon-meio-pagamento" [src]="meio.img" alt="">
+                  </mat-panel-title>
+                  <mat-panel-description>
+                    {{
+                    meio.nome }}
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <p>
+                  <td>
+                    <span>
+                      &nbsp; Selecione o parcelamento:
+
+
+                      <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="quantidadeParcela">
+                        <option [value]="i+1"
+                          *ngFor=" let a of returnArray(calcularParcelamento(totalPedido, meio).totalParcela), let i = index">
+                          {{i+1}} X {{ totalPedido / (i+1) | currency:'BRL':true }}
+                        </option>
+                      </select>
+
+
+                      <div *ngIf="meio.valorMinParcela == 999999999" class="troco">
+                        &nbsp; Troco para:
+                        <div class="input-group mb-3">
+                          <input type="text" class="form-control" id="mask-currencyNumber" [(ngModel)]="troco"
+                            [textMask]="{mask: MASKS.currency.textMask}"> <br>
+                        </div>
+                      </div>
+                      <span *ngIf='trocoF() <= totalPedido  && trocoF() != null ' class="troco-error m-1">
+                        Troco não pode ser menor que o valor total! </span>
+                    </span>
+                  </td>
+                </p>
+              </mat-expansion-panel>
+            </mat-accordion>
+            <br>
+
+          </div>
+
+          <div class="col-12 col-sm-6">
+            <br>
+            <div *ngIf="quantidadeParcela">
+              <span>Forma de pagamento selecionada:</span> <br> <br>
+              Tipo de pagamento: <span class="forma-selecionada "> {{ meioPagamento.nome }} </span> <br>
+              Quantidade de parcelas: <span class="forma-selecionada "> {{quantidadeParcela }} x {{totalPedido
+                /(quantidadeParcela) | currency:'BRL':true }} </span>
+              <br>
+              <span *ngIf="meioPagamento.id == 0 && trocoF() && trocoF() > totalPedido "> Troco para: {{ trocoF() |
+                currency:'BRL':true }} </span>
+            </div>
+          </div>
+
+        </div>
+
+      </mat-card>
+
+    </div>
+
+    <div class="col-4 ">
+    </div>
+
+    <div class="col-1 my-5" (click)="finalizarpedido()">
+      <button mat-raised-button class="buton-finalizar ">Finalizar Pedido</button>
+    </div>
+
+    <div class="col-4 ">
+
+    </div>
+
   </div>
-
-  <div class="col-12 col-sm-6">
-    <mat-card class="total-carrinho sucess p-5">
-
-      <h3> ENEDERECO PARA <span class="vermelho"> ENTREGA </span></h3>
-
-      <br>
-      Rua: <span class="vermelho text-uppercase">{{ enderecoCliente.rua }} </span>
-      Nº: <span class="vermelho text-uppercase">{{ enderecoCliente.numero }} </span> <br>
-      Bairro: <span class="vermelho text-uppercase">{{ enderecoCliente.bairro }} </span> <br>
-      Cidade: <span class="vermelho text-uppercase">{{ enderecoCliente.cidade }} </span>,
-      <span class="vermelho text-uppercase"> {{ enderecoCliente.estado }} </span>
-
-    </mat-card>
-
-  </div>
-
-  <div class="col-12 col-sm-6">
-    <mat-card class="total-carrinho sucess p-5">
-
-      <h3> SELECIONE A FORMA DE <span class="vermelho">PAGAMENTO NA ENTREGA</span></h3>
-
-      <mat-accordion>
-
-        <mat-expansion-panel hideToggle *ngFor="let meio of meiosPagamento">
-          <mat-expansion-panel-header *ngIf="meio.valorMinParcela < totalPedido || meio.id == 0">
-            <mat-panel-title>
-              <img class="img-icon-meio-pagamento" [src]="meio.img" alt="">
-            </mat-panel-title>
-            <mat-panel-description>
-              {{
-              meio.nome }}
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-          <p>
-            <td>
-              <span>
-                &nbsp; Em até
-                {{ calcularParcelamento(totalPedido, meio).totalParcela }}
-                x de
-                {{ calcularParcelamento(totalPedido, meio).valor | currency:'BRL':true }}
-
-
-                <select class="form-control" id="exampleFormControlSelect1">
-                  <option
-                    *ngFor=" let a of returnArray(calcularParcelamento(totalPedido, meio).totalParcela), let i = index">
-                    {{i+1}} X {{ calcularParcelamento(totalPedido, meio).valor / (i+1) | currency:'BRL':true }}
-                  </option>
-                </select>
-
-
-                <div *ngIf="meio.id == 0">
-                  &nbsp; Troco para:
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">R$</span>
-                    </div>
-                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-
-                  </div>
-
-                </div>
-
-              </span>
-            </td>
-          </p>
-        </mat-expansion-panel>
-      </mat-accordion>
-
-
-    </mat-card>
-
-  </div>
-
 </div>

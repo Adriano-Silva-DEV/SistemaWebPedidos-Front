@@ -36,10 +36,12 @@
                 </dl>
 
                 <div class="buton position-relative">
-                    <button mat-raised-button color="warn" (click)="adcionarCarrinho(produto)"><i
+                    <button mat-raised-button color="warn" [disabled]="produto.quantidadeDisponivel < 1" (click)="adcionarCarrinho(produto)"><i
                             class="fa-solid fa-cart-shopping "></i> Carrinho</button>
                     &nbsp; &nbsp;
                     <a class="btn btn-info" href="javascript:window.history.back();">Voltar</a>
+                    <br>
+                    <span *ngIf="produto.quantidadeDisponivel < 1" > Indisponivel </span>
 
                 </div>
             </mat-card>

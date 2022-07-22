@@ -23,13 +23,14 @@
         <thead class="thead-2">
             <tr>
                 <th colspan="2">Nome</th>
-                <th  colspan="1">Documento</th>
+                <th  colspan="1">Documento</th> 
                 <th colspan="1">Ativo?</th>
                 <th colspan="4"></th>
             </tr>
         </thead>
+        <tbody class="table-produt">
         <tr *ngFor="let fornecedor of fornecedores">
-            <td class="text-pequeno" colspan="2">
+            <td  colspan="2">
                 {{ fornecedor.nome }}
             </td>
             <td class="text-pequeno" colspan="1">
@@ -38,18 +39,19 @@
             <td colspan="1">
                 <input [checked]="fornecedor.ativo" class="check-box" disabled="disabled" type="checkbox">
             </td>
-            <td class="text-right" colspan="4">
-                <a class="btn btn-sm btn-danger" [routerLink]="['/adm/fornecedores/detalhes',fornecedor.id]">
+            <td class="text-center" colspan="4">
+                <a class="btn m-1 btn-sm btn-danger" [routerLink]="['/adm/fornecedores/detalhes',fornecedor.id]" title="Visualizar">
                     <span class="fa fa-search"></span>
                 </a>&nbsp;
-                <a class="btn  btn-sm btn-danger" [routerLink]="['/adm/fornecedores/editar',fornecedor.id]">
+                <a class="btn m-1 btn-sm btn-danger" [routerLink]="['/adm/fornecedores/editar',fornecedor.id]" title="Editar">
                     <span class="fa fa-pencil-alt"></span>
                 </a>&nbsp;
-                <a class="btn  btn-sm btn-danger" [routerLink]="['/adm/fornecedores/excluir',fornecedor.id]">
+                <a class="btn m-1 btn-sm btn-danger" [routerLink]="['/adm/fornecedores/excluir',fornecedor.id]" title="Excluir">
                     <span class="fa fa-trash"></span>
                 </a>
             </td>
         </tr>
+        </tbody>
     </table>
 </div>
 </div>

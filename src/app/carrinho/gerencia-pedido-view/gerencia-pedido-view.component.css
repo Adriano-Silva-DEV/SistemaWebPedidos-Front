@@ -1,0 +1,118 @@
+.pedido-body {
+    background-color: rgba(204, 202, 199, 0.185);
+}
+
+@media (min-width: 1300px) {
+  .pedido-body { margin: 10px ;
+    padding: 10px;
+  }
+  }
+
+.titulo {
+    font-size: 50px;
+    color: rgb(187, 44, 25);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: center;
+}
+
+.vermelho {
+    color: rgb(204, 61, 42);
+}
+
+h3{
+  color: #53535c;
+}
+  
+  .total-carrinho {
+    width: 100%;
+    font-size: 15px;
+    color: #8f8989;
+  
+  }
+  
+  .meio-pagamento {
+    font-size: 15px;
+    color: rgb(46, 46, 46);
+  }
+  
+  .radio-buton {
+    display: inline;
+  }
+  
+  .totalPedido {
+    color: #1db82a;
+  }
+  
+  .img-icon-meio-pagamento {
+    width: 25px;
+    height: 20px;
+  }
+  
+  
+  .qnt {
+    font-size: 15px;
+    font-family: "Times New Roman", Times, serif;
+    color: crimson;
+  }
+  
+  .red {
+    border-left: 3px solid #f74756;
+  }
+  
+  .sucess {
+    border-left: 3px solid #ffffff;
+  }
+  
+  .qnt-item {
+    font-size: 35px;
+    font-family: "Times New Roman", Times, serif;
+    color: crimson;
+  }
+  
+  
+  .itens-carrinho {
+    min-height: 120px;
+  }
+  
+
+  .mat-form-field + .mat-form-field {
+    margin-left: 8px;
+  }
+
+
+  .buton-finalizar{
+    background : #00C853;
+    color: #ffffff;
+  }
+
+  .forma-selecionada{
+    font-size: 18px;
+    font-family: "Times New Roman", Times, serif;
+    color: crimson;
+  }
+
+  .table{
+    color: #8d8a8a;
+  }
+
+  .id{
+color: #af391b;
+  }
+
+  .nome{
+color: rgb(141, 135, 135);
+font-size: 15px;
+  }
+
+  .quant{
+color: #bb2a2a;
+  }
+
+  .troco-error{
+    color: #a13a3a;
+    font-size: 12px;
+  }
+
+  .table-produto{
+    cursor: pointer;
+  }

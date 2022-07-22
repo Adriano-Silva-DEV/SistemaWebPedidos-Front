@@ -2,6 +2,7 @@ export class DadosUsuario {
   id: string;
   email: string;
   password: string;
+  passwordOld: string; 
   confirmPassword: string;
   usuario: Usuario = new Usuario();
 };
@@ -14,9 +15,9 @@ export class Usuario {
 };
 
 export class Endereco {
-    numero: string;
-    rua: string;
-    bairro: string;
-    cidade: string;
-    estado: string;
+    numero?: string;
+    rua?: string;
+    bairro?: string;
+    cidade?: string;
+    estado?: string;
 };

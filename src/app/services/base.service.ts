@@ -7,7 +7,7 @@ export abstract class BaseService{
     protected UrlServiceV1 : string = environment.apiUrlv1;
 
     public localStorage = new LocalStorageUtils();
-
+  
     protected ObterHeaderJson() {
         return {
             headers: new HttpHeaders({
@@ -42,7 +42,10 @@ export abstract class BaseService{
         }
         if (response.status === 500) {
             customError.push("Ops!! Ocorreu um erro, tente novamente mais tarde ou contate o nosso suporte.");
-            
+        
+      if (response.status === 401) {
+            this.localStorage.limparDadosLocaisUsuario();       
+      }    
                    
             customResponse.error.errors = customError;
             return throwError(customResponse);

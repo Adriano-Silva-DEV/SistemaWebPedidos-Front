@@ -1,12 +1,15 @@
 <header class="topo border-bottom  box-shadow bg-white">
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark menu-top">
+    <nav class="navbar menu-pc navbar-expand-sm navbar-toggleable-sm navbar-dark menu-top">
         <div class="container">
             <a class="navbar-brand text-white " [routerLink]="['/home']">
                 <img class="img-logo" src="{{imagens}}/{{ sobre.imagem1 }}">
             </a>
-            <button class="navbar-toggler border-0 text-buton-menu-top" type="button"
-                (click)="isCollapsed = !isCollapsed" data-toggle="collapse" data-target=".navbar-collapse"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler border-0 text-buton-menu-top" type="button" data-toggle="collapse"
+                data-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+
+                <!--    (click)="isCollapsed = !isCollapsed" -->
+
                 <app-menu-login></app-menu-login>
             </button>
 
@@ -21,10 +24,8 @@
 
             </div>
 
-            <a class="nav-link text-white" id="saudacaoUsuario" href="javascript:void(0)"> &nbsp; </a>
-
-            <button class="mx-5 my-3 icone float-right" *ngIf="badge > 0" matBadge="{{badge}}" matBadgeColor="warn"
-                mat-mini-fab [routerLink]="['/carrinho']">
+            <button class="mx-1 carrinho-icon icone float-right" *ngIf="badge > 0" matBadge="{{badge}}"
+                matBadgeColor="warn" mat-mini-fab [routerLink]="['/page']">
                 <mat-icon>shopping_cart </mat-icon>
             </button>
 
@@ -35,38 +36,47 @@
             </div>
         </div>
     </nav>
-</header>
 
 
 
-<!-- <header>
-    <nav class="navbar navbar-expand navbar-toggleable-sm navbar-dark bg-white border-bottom box-shadow header">
+    <nav class="navbar menu-mobile navbar-expand-sm navbar-toggleable-sm navbar-dark menu-top">
         <div class="container">
-            <a class="navbar-brand text-white" [routerLink]="['/home']">Meus Produtos</a>
-            <button class="navbar-toggler " type="button" (click)="isCollapsed = !isCollapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse1 justify-content-center" [ngbCollapse]="isCollapsed">
- 
-          
-                <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
-                <i class="fas fa-search text-white"></i>
 
-                <app-menu-login class="mx-5"> </app-menu-login>
-             
+            <div class="row text-center">
+                <div class="col-2 "> <a class="navbar-brand text-white " [routerLink]="['/home']">
+                        <img class="img-logo" src="{{imagens}}/{{ sobre.imagem1 }}">
+                    </a></div>
+                      <div class="col-5">
+                </div>
+                    <div class="col-2">
+                        <app-menu-login></app-menu-login>
+                    </div>
+                <div class="col-12 my-5">
+                    <div class="input-group ">
+                        <input type="text" id="busca" #busca class="form-control" />
+                        <span class="input-group-btn">
+                            <button (click)="buscar()" type="button" class="btn btn-default">
+                                <i class="fa fa-search text-white fa-lg "></i>
+                            </button>                           
+                        </span>          
+                    </div>
+                </div>
+                <div class="col-2"> 
+                </div>
+              
+               
             </div>
         </div>
+
     </nav>
-</header> -->
 
-<!-- border-bottom box-shadow header
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large ">
+            <button class="mr-3 carrinho-icon icone float-right" *ngIf="badge > 0" matBadge="{{badge}}"
+                matBadgeColor="warn" mat-mini-fab [routerLink]="['/page']">
+                <mat-icon>shopping_cart </mat-icon>
+            </button>
+        </a>
+        </div>
 
-justify-content-center
-
-<a class="navbar-brand text-white" [routerLink]="['/home']">Meus Produtos</a>
-
-
-<input class="form-control" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
-                <button class="btn btn-outline-success " type="submit">Pesquisar</button>
-
-                <app-menu-login class="mx-5"></app-menu-login> -->
+</header>

@@ -1,0 +1,23 @@
+h3{
+    font-size: 50px;
+    font-family:'Times New Roman', Times, serif
+}
+
+.whasapp{
+    height: 40px;
+}
+
+.img1{
+    height: 350px;
+}
+
+.dialogo{
+    color: rgb(248, 241, 241);
+    font-size: 18px;
+    background-color: #07F58A;
+    border-radius: 2%;
+}
+
+.fa-whatsapp{
+    font-size: 40px;
+}

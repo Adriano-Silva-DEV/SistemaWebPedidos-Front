@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CarrinhoComponent } from './carrinho/carrinho.component';
 import { CarrinhoAppComponent } from './carrinho.app.component';
@@ -20,6 +20,19 @@ import { ContaModule } from '../conta/conta.module';
 import { MeioPagamentoService } from './service/Forma-Pagamento.Service';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { TextMaskModule } from 'angular2-text-mask';
+import { PedidoService } from './service/pedido.service';
+import { ContaGuard } from '../conta/services/conta.guard';
+import { CarrinhoGuard } from './carrinho.guard';
+import { PedidoUsuarioComponent } from './pedido-usuario/pedido-usuario.component';
+import { PedidoUsuarioViewComponent } from './pedido-usuario-view/pedido-usuario-view.component';
+import { PedidoResolve } from './service/pedido.resolve';
+import { MenuUsuarioComponent } from '../menu/menu-usuario/menu-usuario.component';
+import { GerenciaPedidoViewComponent } from './gerencia-pedido-view/gerencia-pedido-view.component';
+import { ListaGerenciaPedidoComponent } from './lista-gerencia-pedido/lista-gerencia-pedido.component';
+import { FornecedorResolve } from '../fornecedor/services/fornecedor.resolve';
+import { FornecedorGuard } from '../fornecedor/services/fornecedor.guard';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -28,6 +41,10 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     DetalhesComponent,
     BuscaComponent,
     PedidoComponent,
+    PedidoUsuarioComponent,
+    PedidoUsuarioViewComponent,
+    GerenciaPedidoViewComponent,
+    ListaGerenciaPedidoComponent
   ],
   imports: [
     CommonModule,
@@ -44,12 +61,20 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     FormsModule,
     ContaModule,
     MatExpansionModule,
-    MatFormFieldModule
-    
+    MatFormFieldModule,
+    TextMaskModule,
+    MenuModule,
+    NgxSpinnerModule,
+
   ],
   providers:[
     PedidoComponent,
-    MeioPagamentoService
+    MeioPagamentoService,
+    PedidoService,
+    { provide: LOCALE_ID, useValue: 'pt' },
+    CarrinhoGuard,
+    PedidoResolve,
+    FornecedorGuard
   ]
 })
 export class CarrinhoModule {}

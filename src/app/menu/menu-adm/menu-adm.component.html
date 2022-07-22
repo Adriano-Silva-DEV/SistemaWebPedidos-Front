@@ -1,9 +1,14 @@
 <div class="mb-3"> 
 <span class="align-bottom font-weight-bold text-danger">Menu Adm:</span>
 <div class="list-group ">
+    
     <a [routerLink]="['/adm/produtos/listar-todos']" class="list-group-item list-group-item-action btn-menu-adm" [ngClass]="{'btn-active-adm': menuActive === 'produto' }">
         <i class="fa fa-shopping-bag" aria-hidden="true"></i>  Produtos
     </a>
+
+    <a [routerLink]="['/page/gerenciar-pedidos']" class="list-group-item list-group-item-action btn-menu-adm " [ngClass]="{'btn-active-adm': menuActive === 'gerenciar-pedido' }"> 
+        <i class="fa fa-cog" aria-hidden="true"></i> Todos os Pedidos</a>
+
     <a [routerLink]="['/adm/fornecedores/listar-todos']" class="list-group-item list-group-item-action btn-menu-adm " [ngClass]="{'btn-active-adm': menuActive === 'fornecedor' }"> 
         <i class="fa fa-users" aria-hidden="true"></i> Fornecedores</a>
    
@@ -12,7 +17,9 @@
    
     <a [routerLink]="['/adm/sobre/info']" class="list-group-item list-group-item-action btn-menu-adm " [ngClass]="{'btn-active-adm': menuActive === 'sobre' }"> 
         <i class="fa fa-cog" aria-hidden="true"></i> Sobre</a>
+      
   </div>
 
+  
 </div>
 

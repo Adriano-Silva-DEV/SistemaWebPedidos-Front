@@ -1,21 +1,30 @@
 .titulo {
-    font-size: 50px;
+    font-size: 45px;
     color: rgb(187, 44, 25);
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: center;
 }
 
 .vermelho {
-    color: rgb(218, 68, 68);
+    color: rgb(201, 54, 49);
 }
 
-
+h3{
+  color: #53535c;
+}
   
   .total-carrinho {
     width: 100%;
     font-size: 15px;
-    min-height: 240px;
+    color: #8f8989;
+  
   }
   
+  
+  .table-produto{
+    cursor: pointer;
+  }
+
   .meio-pagamento {
     font-size: 15px;
     color: rgb(46, 46, 46);
@@ -46,7 +55,7 @@
   }
   
   .sucess {
-    border-left: 3px solid #2eb114;
+    border-left: 3px solid #ffffff;
   }
   
   .qnt-item {
@@ -69,4 +78,37 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .buton-finalizar{
+    background : #00C853;
+    color: #ffffff;
+  }
+
+  .forma-selecionada{
+    font-size: 18px;
+    font-family: "Times New Roman", Times, serif;
+    color: crimson;
+  }
+
+  .table{
+    color: #8d8a8a;
+  }
+
+  .id{
+color: #af391b;
+  }
+
+  .nome{
+color: rgb(141, 135, 135);
+font-size: 15px;
+  }
+
+  .quant{
+color: #bb2a2a;
+  }
+
+  .troco-error{
+    color: #a13a3a;
+    font-size: 12px;
   }

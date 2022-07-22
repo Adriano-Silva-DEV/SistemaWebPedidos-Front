@@ -12,6 +12,9 @@ import { ProdutoService } from '../services/produto.service';
 export class ListaProdutosComponent implements OnInit {
   errorMessage: string;
 
+  @Input()
+  relacao: string;
+
   imagens: string = environment.imgUrl;
 
   constructor(

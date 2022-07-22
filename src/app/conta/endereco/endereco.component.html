@@ -1,3 +1,111 @@
-<p>
-  endereco works!
-</p>
+<app-menu-categoria class="m-3 "> </app-menu-categoria>
+
+<div class="container main-container">
+
+<div class="row"> 
+  <div class="col-12 col-sm-2">
+    <app-menu-usuario [menuActive]="'endereco'"> </app-menu-usuario>
+  </div>
+
+  <div class="col-12 col-sm-10">
+
+    <form novalidate (ngSubmit)="adicionarConta()" [formGroup]="cadastroForm" *ngIf="cadastroForm">
+      <div class="row justify-content-sm-center">
+
+              <h3> Editando Endereço</h3>
+              <hr>
+              <div class="form-group">
+                  <label class="col-md-2 control-label">Numero</label>
+                  <div class="col-md-10">
+                      <input class="form-control" id="numero" type="text" placeholder="Numero (requerido)"
+                          formControlName="numero" [ngClass]="{'is-invalid': displayMessage.numero }" />
+                      <span class="text-danger" *ngIf="displayMessage.numero">
+                          <p [innerHTML]="displayMessage.numero"></p>
+                      </span>
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label class="col-md-2 control-label">Rua</label>
+                  <div class="col-md-10">
+                      <input class="form-control" id="rua" type="text" placeholder="Rua (requerido)"
+                          formControlName="rua" [ngClass]="{'is-invalid': displayMessage.rua }" />
+                      <span class="text-danger" *ngIf="displayMessage.rua">
+                          <p [innerHTML]="displayMessage.rua"></p>
+                      </span>
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label class="col-md-2 control-label">Bairro</label>
+                  <div class="col-md-10">
+                      <input class="form-control" id="bairro" type="text" placeholder="Bairro (requerido)"
+                          formControlName="bairro" [ngClass]="{'is-invalid': displayMessage.bairro }" />
+                      <span class="text-danger" *ngIf="displayMessage.bairro">
+                          <p [innerHTML]="displayMessage.bairro"></p>
+                      </span>
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label class="col-md-2 control-label">Cidade</label>
+                  <div class="col-md-10">
+                      <input class="form-control" id="cidade" type="text" placeholder="Cidade (requerido)"
+                          formControlName="cidade" [ngClass]="{'is-invalid': displayMessage.cidade }" />
+                      <span class="text-danger" *ngIf="displayMessage.cidade">
+                          <p [innerHTML]="displayMessage.cidade"></p>
+                      </span>
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label class="col-md-2 control-label">Estado</label>
+                  <div class="col-md-10">
+                      <select class="form-control" id="estado" formControlName="estado"
+                          [ngClass]="{ 'is-invalid': displayMessage.estado }">
+                          <option value="">Estado</option>
+                          <option value="AC">Acre</option>
+                          <option value="AL">Alagoas</option>
+                          <option value="AP">Amapá</option>
+                          <option value="AM">Amazonas</option>
+                          <option value="BA">Bahia</option>
+                          <option value="CE">Ceará</option>
+                          <option value="DF">Distrito Federal</option>
+                          <option value="ES">Espírito Santo</option>
+                          <option value="GO">Goiás</option>
+                          <option value="MA">Maranhão</option>
+                          <option value="MT">Mato Grosso</option>
+                          <option value="MS">Mato Grosso do Sul</option>
+                          <option value="MG">Minas Gerais</option>
+                          <option value="PA">Pará</option>
+                          <option value="PB">Paraíba</option>
+                          <option value="PR">Paraná</option>
+                          <option value="PE">Pernambuco</option>
+                          <option value="PI">Piauí</option>
+                          <option value="RJ">Rio de Janeiro</option>
+                          <option value="RN">Rio Grande do Norte</option>
+                          <option value="RS">Rio Grande do Sul</option>
+                          <option value="RO">Rondônia</option>
+                          <option value="RR">Roraima</option>
+                          <option value="SC">Santa Catarina</option>
+                          <option value="SP">São Paulo</option>
+                          <option value="SE">Sergipe</option>
+                          <option value="TO">Tocantins</option>
+                      </select>
+                      <span class="text-danger" *ngIf="displayMessage.estado">
+                          <p [innerHTML]="displayMessage.estado"></p>
+                      </span>
+                  </div>
+              </div>
+          </div>
+          <div class="col-12 ">
+              <div class="form-group">
+                  <div class="col-md-4 col-md-offset-2">
+                      <span><button class="btn btn-success" id="Registrar" [disabled]="!cadastroForm.valid"
+                              type="submit">Editar</button></span>
+                  </div>
+              </div>
+          </div>
+  </form>
+
+
+
+    </div>
+    </div>
+    </div>

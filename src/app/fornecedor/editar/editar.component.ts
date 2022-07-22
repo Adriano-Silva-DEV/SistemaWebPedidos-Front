@@ -178,7 +178,7 @@ export class EditarComponent implements OnInit {
     let toast = this.toastr.success('Fornecedor atualizado com sucesso!', 'Sucesso!');
     if (toast) {
       toast.onHidden.subscribe(() => {
-        this.router.navigate(['/fornecedores/listar-todos']);
+        this.router.navigate(['/adm/fornecedores/listar-todos']);
       });
     }
   }

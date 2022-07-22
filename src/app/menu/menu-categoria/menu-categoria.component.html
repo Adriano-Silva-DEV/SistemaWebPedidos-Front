@@ -1,5 +1,5 @@
 
-  <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark border-bottom box-shadow  bg-menu-categoria">
+  <nav class="navbar  navbar-expand-sm navbar-toggleable-sm navbar-dark border-bottom box-shadow  bg-menu-categoria">
     <div class="container">
 
         <a class="navbar-brand text-white navbar-toggler border-0 ">   Categorias </a>
@@ -13,7 +13,7 @@
          
 
             <ul class="row navbar-nav  my-2 flex-grow-1 justify-content-center">
-                <li class=" col-2 nav-item text-center  font-weight-bold text-justify" *ngFor="let categoria of categorias">
+                <li class=" col-2 nav-item text-center  font-weight-bold text-justify" *ngFor="let categoria of categorias" >
                     <a class="nav-link2   btn-menu-cat " [routerLink]="['/adm/categoria/obter', categoria.id]" >{{categoria.nome | uppercase}} </a>
                    </li>
             </ul>

@@ -14,17 +14,18 @@
                 </span>
                 
                 <br>
-                Horário de funcionamento {{sobre.horarioAbertura }} : {{sobre.horarioFechamento}}
+                Horário de funcionamento {{sobre.horarioAbertura }}hrs : {{sobre.horarioFechamento}}hrs
                 <br>
-
+                <br>
+                <a  class="link" [routerLink]="['/fale-conosco']" > Fale Conosco  </a> 
 
             </div>
             <div class="col-12 col-sm-4 mt-5 ">
                <h3>Categoriras </h3>  
                <div class="row">
-               <div class="col-4" *ngFor="let categoria of categorias">
+               <span class="col-6" *ngFor="let categoria of categorias">
                 <a  class="link" [routerLink]="['/adm/categoria/obter', categoria.id]" > {{categoria.nome}} </a>  
-               </div>
+               </span>
             </div>
         </div>
             <div class="col-12 col-sm-4 my-5">

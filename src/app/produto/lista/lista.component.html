@@ -63,19 +63,38 @@
                             <input [checked]="produto.ativo" class="check-box" disabled="disabled" type="checkbox">
                         </td>
                         <td class="text-center " colspan="4">
-                            <a class="btn m-1 btn-sm btn-danger" [routerLink]="['/adm/produtos/detalhes',produto.id]">
+                            <a class="btn m-1 btn-sm btn-danger" [routerLink]="['/adm/produtos/detalhes',produto.id]" title="Visualizar">
                                 <span class="fa fa-search"></span>
                             </a>&nbsp;
-                            <a class="btn m-1 btn-sm btn-danger" [routerLink]="['/adm/produtos/editar',produto.id]">
+                            <a class="btn m-1 btn-sm btn-danger" [routerLink]="['/adm/produtos/editar',produto.id]" title="Editar">
                                 <span class="fa fa-pencil-alt"></span>
                             </a>&nbsp;
-                            <a class="btn m-1 btn-sm btn-danger" [routerLink]="['/adm/produtos/excluir',produto.id]">
+                            <a class="btn m-1 btn-sm btn-danger" [routerLink]="['/adm/produtos/excluir',produto.id]" title="Excluir">
                                 <span class="fa fa-trash"></span>
                             </a>
                         </td>
                     </tr>
                 </tbody>
             </table>
+
+            <nav aria-label="...">
+                <ul class="pagination">
+                  <li class="page-item">
+                    <a class="page-link" [routerLink]="['/adm/produtos/listar-todos']" *ngIf="pagination.paginaAtual > 1 " [queryParams]="{ pagina: pagination.paginaAtual - 1 }">Anterior</a>
+                  </li>
+                
+                  <span *ngFor="item in item of [].constructor( pagination.total); let i = index" > 
+                  <li  *ngIf=" i+1 >= (pagination.paginaAtual - 10) &&  (i <= pagination.paginaAtual + 10)"  [ngClass]="{'page-item active' : i+1 == pagination.paginaAtual}" >
+                    <a class="page-link" [routerLink]="['/adm/produtos/listar-todos']" [queryParams]="{ pagina: i+1 }"> {{  i+1 }}</a>
+                  </li>
+                </span>
+                 
+                  <li class="page-item">
+                    <a class="page-link" [routerLink]="['/adm/produtos/listar-todos']" *ngIf="pagination.paginaAtual < pagination.total " [queryParams]="{ pagina: pagination.paginaAtual + 1 }">Proximo</a>
+                  </li>
+                </ul>
+              </nav>
+
         </div>
     </div>
 

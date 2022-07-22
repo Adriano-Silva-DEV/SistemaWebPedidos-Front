@@ -19,7 +19,7 @@
                         <li *ngFor="let error of errors">{{ error }}</li>
                     </ul>
                 </div>
-             
+            
                 <div class="form-group">
                     <label class="control-label">Nome</label>
                     <div>
@@ -44,7 +44,7 @@
             
             </form>
             <br>
-            <app-lista-produtos [produtos]='produtos' > </app-lista-produtos>
+            <app-lista-produtos [produtos]='produtos' [relacao]="' esta Categoria'" > </app-lista-produtos>
         </div>
     </div>
 

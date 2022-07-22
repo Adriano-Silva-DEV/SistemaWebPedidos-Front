@@ -39,7 +39,7 @@ export class ExcluirComponent  {
     let toast = this.toastr.success('Produto excluido com sucesso!', 'Sucesso!');
     if (toast) {
       toast.onHidden.subscribe(() => {
-        this.router.navigate(['/produtos/listar-todos']);
+        this.router.navigate(['/adm/produtos/listar-todos']);
       });
     }
   }

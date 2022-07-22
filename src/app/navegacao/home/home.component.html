@@ -1,11 +1,37 @@
 <app-menu-categoria class="m-3"> </app-menu-categoria>
 
-<div class="container-fluid main-container  ">
-    <div class="row text-center">
-        
-            <app-card-produto [produtos]="produtos"> </app-card-produto>
-     
+<div class="container-fluid main-container ">
+  <div class="row text-center justify-content-center">
+    <div class="col-12">
+      <app-card-produto [produtos]="produtos"> </app-card-produto>
 
     </div>
-</div>
-<!-- Fim Content -->
+    <div class="col-2 mt-5">
+      <nav aria-label="..." *ngIf="produtos.length > 0">
+        <ul class="pagination">
+          <li class="page-item">
+            <a class="page-link" [routerLink]="['/home']" *ngIf="pagination.paginaAtual > 1 "
+              [queryParams]="{ pagina: pagination.paginaAtual - 1 }">Anterior</a>
+          </li>
+
+          <span *ngFor="let item of [].constructor( pagination.total); let i = index">
+            <li *ngIf=" i+1 >= (pagination.paginaAtual - 10) &&  (i <= pagination.paginaAtual + 10)"
+              [ngClass]="{'page-item active' : i+1 == pagination.paginaAtual}">
+              <a class="page-link" [routerLink]="['/home']" [queryParams]="{ pagina: i+1 }"> {{ i+1 }}</a>
+            </li>
+          </span>
+
+          <li class="page-item">
+            <a class="page-link" [routerLink]="['/home']" *ngIf="pagination.paginaAtual < pagination.total "
+              [queryParams]="{ pagina: pagination.paginaAtual + 1 }">Proximo</a>
+          </li>
+        </ul>
+      </nav>
+      <div>
+      </div>
+      </div>
+      <div class="col-12" *ngIf="produtos.length == 0">
+        <h3> Desculpe não foram encontrados produtos.</h3> </div>
+    </div>
+    </div>
+ 

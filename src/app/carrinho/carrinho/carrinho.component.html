@@ -1,6 +1,6 @@
 <app-menu-categoria class="m-3"> </app-menu-categoria>
 
-<div class="container-fluid main-container  ">
+<div class="container main-container  ">
 
     <div class="row">
         <div class="col-12 col-sm-6 my-5">
@@ -26,7 +26,7 @@
                             <img class="img-produto rounded mx-auto d-block card-img" title=""
                                 src="{{imagens}}/{{ item.produto.imagem1 }}"
                                 onerror="this.src = 'https://cdn.neemo.com.br/uploads/settings_webdelivery/logo/996/notfound.png' "
-                                [routerLink]="['/carrinho/detalhes',item.produto.id]">
+                                [routerLink]="['/page/detalhes',item.produto.id]">
                             <br>
 
 
@@ -56,7 +56,7 @@
 
                     <br>
                     <div *ngFor="let meio of meiosPagamento" class=" m-2">
-                        <div *ngIf="meio.valorMinParcela < totalPedido || meio.id == 0">
+                        <div *ngIf="meio.valorMinParcela < totalPedido || meio.valorMinParcela == 999999999 ">
                             <td>
                                 <img class="img-icon-meio-pagamento" [src]="meio.img" alt="">
                                 &nbsp;
@@ -78,7 +78,7 @@
                 </span>
 
                 <br>
-                <button mat-flat-button [routerLink]="['/carrinho/pedido']" color="primary">Finalizar Pedido</button>
+                <button mat-flat-button [routerLink]="['/page/pedido']" color="primary">Finalizar Pedido</button>
 
             </mat-card>
         </div>

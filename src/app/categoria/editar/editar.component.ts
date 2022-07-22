@@ -59,6 +59,7 @@ export class EditarComponent implements OnInit {
     this.categoriaForm = this.fb.group({
       nome: ['', [Validators.required,Validators.minLength(2), Validators.maxLength(25)]],
       ativo: [],
+      id: []
     });
 
     this.preencherForm();     
@@ -95,9 +96,11 @@ export class EditarComponent implements OnInit {
  
    adicionarCategoria() {
      if (this.categoriaForm.dirty && this.categoriaForm.valid) {
-       this.categoria =    this.categoriaForm.value
+       this.categoria.id =    this.categoriaForm.value.id;
+       this.categoria.nome =  this.categoriaForm.value.nome;
+       this.categoria.ativo = this.categoriaForm.value.ativo;
  
-       this.categoriaService.novaCategoria(this.categoria).subscribe(
+       this.categoriaService.atualizarCategoria(this.categoria).subscribe(
          (sucesso) => {
            this.processarSucesso(sucesso);
          },

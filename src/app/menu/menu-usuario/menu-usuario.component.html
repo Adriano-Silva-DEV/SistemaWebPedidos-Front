@@ -1,0 +1,20 @@
+<div class="mb-3">
+  <span class="align-bottom font-weight-bold text-danger">Menu:</span>
+  <div class="list-group ">
+    <a [routerLink]="['/page/meus-pedidos']" class="list-group-item list-group-item-action btn-menu-adm"
+      [ngClass]="{'btn-active-adm': menuActive === 'pedido' }">
+      <i class="fa fa-shopping-bag" aria-hidden="true"></i> Meus Pedidos
+    </a>
+
+    <a [routerLink]="['/conta/endereco']" class="list-group-item list-group-item-action btn-menu-adm "
+      [ngClass]="{'btn-active-adm': menuActive === 'endereco' }"> <i class="fas fa-address-card" aria-hidden="true">
+      </i> Meu endereco</a>
+
+    <a [routerLink]="['/conta/meus-dados']" class="list-group-item list-group-item-action btn-menu-adm "
+      [ngClass]="{'btn-active-adm': menuActive === 'dados-usuario'}"> <i class="fa-solid fa-user" aria-hidden="true">
+      </i> Minha conta</a>
+
+
+  </div>
+
+</div>

@@ -1,0 +1,27 @@
+<app-menu-categoria class="m-3"> </app-menu-categoria>
+
+<div class="container main-container ">
+  <div class="row  justify-content-center">
+    <div class="col-12 my-5 text-center">
+      <h3>Fale conosco</h3>
+    </div>
+    <div class="col-12 col-sm-6 atendente">
+      <img class="img1" src="../../assets/imgs/mulher-telefone.jpg" alt="">
+    </div>
+
+    <div class="col-12 col-sm-6 py-5 dialogo">
+
+     <div class="mx-4">  <i class="fab fa-whatsapp"></i> {{sobre.contatoPrincipal}} 
+
+      <div class="form-group mt-5">
+        <label for="mensagem">Nos envie uma Mensagem</label>
+        <textarea class="form-control" id="mensagem" name="mensagem" placeholder="Olá," rows="3" #mensagem></textarea>
+      </div>
+
+      <div class=" ">
+        <button mat-raised-button color="red" (click)="enviarMensagem()">Enivar</button>
+      </div>
+  </div>
+    </div>
+  </div>
+</div>

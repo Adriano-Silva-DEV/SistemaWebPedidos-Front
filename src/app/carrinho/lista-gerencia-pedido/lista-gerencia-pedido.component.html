@@ -1,0 +1,95 @@
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "large" color = "#6f87e0" type = "ball-circus" [fullScreen] = "true">
+  <p style="color: white" > Carregando </p></ngx-spinner>
+
+<div class="container main-container">
+
+
+  <div class="row">
+
+    <div class="col-sm-2 col-12 ">
+
+      <app-menu-adm [menuActive]="'gerenciar-pedido'"> </app-menu-adm>
+    </div>
+
+    <div class="col-sm-8 col-12">
+
+
+          <h3 class="text-center" *ngIf="pedidos.length == 0">Não existem pedidos para serem visualizados</h3>
+
+          <div class="row" *ngIf="pedidos.length > 0 ">
+
+
+            <div class=" col-sm-12 col-12  pedido">
+              <h3>TODOS OS PEDIDOS</h3>
+              <hr>
+
+              <table class="table table-hover">
+                <thead class="thead-2">
+                  <tr>
+                    <th colspan="3">
+                      <span>Número</span>
+                    </th>
+                    <th colspan="3">
+                      Valor Total
+                    </th>
+                    <th colspan="2">
+                      Data
+                    </th>
+                    <th colspan="2">
+                      Status
+                    </th>
+                    <th colspan="2">
+                    </th>
+                  </tr>
+                </thead>
+                <tbody class="table-produt">
+                  <tr *ngFor="let pedido of pedidos">
+                    <td colspan="3">
+                      {{ pedido.numeroPedido }}
+                    </td>
+
+                    <td colspan="2">
+                      {{ pedido.valorTotal | currency:'BRL':true }}
+                    </td>
+                    <td colspan="2">
+                      {{ pedido.dataCriacao | date : 'dd/MM/yyyy HH:mm'}}
+                    </td>
+                    <td colspan="2">
+                      {{ pedido.status | uppercase}}
+                    </td>
+                    <td class="text-center " colspan="4">
+                      <a class="btn m-1 btn-sm btn-danger"
+                        [routerLink]="['/page/gerenciar-pedido-visualizar',pedido.numeroPedido]" title="Visualizar">
+                        <span class="fa fa-search"></span>
+
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+
+            <nav aria-label="...">
+              <ul class="pagination">
+                <li class="page-item">
+                  <a class="page-link" [routerLink]="['/page/gerenciar-pedidos']" *ngIf="pagination.paginaAtual > 1 " [queryParams]="{ pagina: pagination.paginaAtual - 1 }">Anterior</a>
+                </li>
+              
+                <span *ngFor="item in item of [].constructor( pagination.total); let i = index" > 
+                <li  *ngIf=" i+1 >= (pagination.paginaAtual - 10) &&  (i <= pagination.paginaAtual + 10)"  [ngClass]="{'page-item active' : i+1 == pagination.paginaAtual}" >
+                  <a class="page-link" [routerLink]="['/page/gerenciar-pedidos']" [queryParams]="{ pagina: i+1 }"> {{  i+1 }}</a>
+                </li>
+              </span>
+               
+                <li class="page-item">
+                  <a class="page-link" [routerLink]="['/page/gerenciar-pedidos']" *ngIf="pagination.paginaAtual < pagination.total " [queryParams]="{ pagina: pagination.paginaAtual + 1 }">Proximo</a>
+                </li>
+              </ul>
+            </nav>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  

@@ -1,5 +1,6 @@
 import { CategoriaModel } from "src/app/categoria/models/categoria";
 import { Fornecedor } from "src/app/fornecedor/models/fornecedor";
+import { Pagination } from '../../carrinho/models/pagination';
 
 export class Produto {
   id: string;
@@ -23,4 +24,6 @@ export class Produto {
   dataCadastro: string;
   dataCriacao: Date;
   imagemUpload: string;
+  pagination: Pagination;
+  quantidadeDisponivel: number;
 }

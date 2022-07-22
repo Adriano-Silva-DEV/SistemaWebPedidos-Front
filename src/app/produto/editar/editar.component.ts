@@ -20,7 +20,8 @@ import { CategoriaService } from 'src/app/categoria/services/categoriaService';
 
 @Component({
   selector: 'app-editar',
-  templateUrl: './editar.component.html'
+  templateUrl: './editar.component.html',
+  styleUrls: ['./editar.component.css']
 })
 export class EditarComponent implements OnInit {
 
@@ -67,6 +68,9 @@ export class EditarComponent implements OnInit {
       fornecedorId: {
         required: 'Escolha um fornecedor',
       },
+      quantidadeDisponivel: {
+        required: 'Quantidade Disponivel Requerida',
+      },
       nome: {
         required: 'Informe o Nome',
         minlength: 'Mínimo de 2 caracteres',
@@ -107,7 +111,8 @@ export class EditarComponent implements OnInit {
       imagem1: [''],
       precoVenda: ['', [Validators.required]],
       ativo: [0],
-      imagem: ['']
+      imagem: [''],
+      quantidadeDisponivel: ['', [Validators.required]]
     });
 
     this.produtoForm.patchValue({
@@ -118,7 +123,8 @@ export class EditarComponent implements OnInit {
       descricao: this.produto.descricao,
       ativo: this.produto.ativo,
       precoVenda: this.produto.precoVenda,
-      imagem1: this.produto.imagem1
+      imagem1: this.produto.imagem1,
+      quantidadeDisponivel: this.produto.quantidadeDisponivel
     });
 
     this.imgAtual = this.produto.imagem1;
@@ -164,7 +170,7 @@ export class EditarComponent implements OnInit {
     let toast = this.toastr.success('Produto cadastrado com sucesso!', 'Sucesso!');
     if (toast) {
       toast.onHidden.subscribe(() => {
-        this.router.navigate(['/produtos/listar-todos']);
+        this.router.navigate(['/adm/produtos/listar-todos']);
       });
     }
   }

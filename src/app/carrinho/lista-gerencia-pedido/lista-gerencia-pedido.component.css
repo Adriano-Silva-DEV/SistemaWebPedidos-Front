@@ -1,0 +1,13 @@
+.page-link{
+    color:rgb(212, 28, 28);
+    
+}
+
+.page-item.active .page-link{
+    background-color: rgb(212, 28, 28) !important;
+    border: rgb(212, 28, 28) !important;
+}
+
+.pedido{
+    min-height: 450px;
+}

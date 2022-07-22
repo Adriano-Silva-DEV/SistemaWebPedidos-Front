@@ -1,8 +1,23 @@
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { catchError, map } from "rxjs/operators";
+import { BaseService } from "src/app/services/base.service";
 import { meioPagamento } from "../models/meio-pagamento";
 
 @Injectable()
-export class MeioPagamentoService{
+export class MeioPagamentoService  extends BaseService {
+
+  constructor(private http: HttpClient) { super() }
+
+  obterTodos(): Observable<meioPagamento[]> {
+    return this.http
+        .get<meioPagamento[]>(this.UrlServiceV1 + "/MeioPagamento", super.ObterAuthHeaderJson())
+        .pipe(
+            map(this.extractData),
+            catchError(this.serviceError)
+            );
+}
 
     meiosPagamento: meioPagamento[] = [
         {
@@ -45,7 +60,7 @@ export class MeioPagamentoService{
         totalparcelamento = meio.numMaxParcelamento;
     
 
-        return { totalParcela: totalparcelamento , valor: valor / totalparcelamento  };
+        return { totalParcela: totalparcelamento , valor: (valor / totalparcelamento)  };
       }
 
       

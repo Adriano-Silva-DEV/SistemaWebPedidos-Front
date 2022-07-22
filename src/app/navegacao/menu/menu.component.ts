@@ -33,17 +33,22 @@ export class MenuComponent implements OnInit {
     this.exibirMenuAdministrador = this.exibirPainelAdmin();
     this.usuarioLogado();
     setInterval(() => {
-      this.badge = this.localStorage.obterCarrinho().itemCarrinho.length;
+      if (this.localStorage.obterCarrinho())
+        this.badge = this.localStorage.obterCarrinho().itemCarrinho.length;
+      else {
+        this.badge = 0;
+      }
     }, 1000);
- this.sobre = new Sobre();
+    this.sobre = new Sobre();
   }
 
   buscar() {
     if (
       this.busca.nativeElement.value != 'undefined' &&
-      typeof this.busca.nativeElement.value != 'undefined'
+      typeof this.busca.nativeElement.value != 'undefined' && this.busca.nativeElement.value != ''
     ) {
-      this.router.navigate(['/carrinho/busca', this.busca.nativeElement.value]);
+      this.router.navigate(['/page/busca', this.busca.nativeElement.value]);
+      this.busca.nativeElement.value = '';
     }
   }
 

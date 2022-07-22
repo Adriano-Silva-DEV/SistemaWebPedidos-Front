@@ -13,8 +13,11 @@ export class Carrinho {
 }
 
 export class ItemCarrinho{
- produto: Produto;
- quantidade: number = 0;
+ id?: string;   
+ produto?: Produto;
+ produtoId?: string;
+ quantidade?: number = 0;
+ valorTotal?: number;
 
 constructor(){
  this.produto = new Produto();  

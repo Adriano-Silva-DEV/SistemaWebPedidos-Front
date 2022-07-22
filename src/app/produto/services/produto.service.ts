@@ -13,9 +13,9 @@ export class ProdutoService extends BaseService {
 
     constructor(private http: HttpClient) { super() }
 
-    obterTodos(): Observable<Produto[]> {
+    obterTodos(skip:number, take:number): Observable<Produto[]> {
         return this.http
-            .get<Produto[]>(this.UrlServiceV1 + "/Produtos", super.ObterAuthHeaderJson())
+            .get<Produto[]>(this.UrlServiceV1 + `/Produtos?skip=${skip}&take=${take}`, super.ObterAuthHeaderJson())
             .pipe(
                 map(this.extractData),
                 catchError(this.serviceError)

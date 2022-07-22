@@ -10,7 +10,7 @@ import { ProdutoService } from 'src/app/produto/services/produto.service';
   styleUrls: ['./busca.component.css']
 })
 export class BuscaComponent implements OnInit {
-  produtos: Produto[] = null;
+  produtos: Produto[] = [];
   id: string;
   params: any;
   constructor(   private produtoService: ProdutoService,

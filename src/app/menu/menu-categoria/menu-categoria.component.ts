@@ -23,7 +23,7 @@ export class MenuCategoriaComponent implements OnInit {
 
     this.categoriaService.obterTodos().subscribe(
       (categorias) => {
-        this.categorias = categorias;
+        this.categorias = categorias.filter(p => p.ativo);
         this.spinner.hide();
       },
       (error) => {

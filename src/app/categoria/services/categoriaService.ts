@@ -47,7 +47,7 @@ export class CategoriaService extends BaseService {
     }
  
     atualizarCategoria(categoriaModel: CategoriaModel): Observable<CategoriaModel> {
-        let response = this.http.put(this.UrlServiceV1+'/Categorias/atualizar/'+categoriaModel.id, CategoriaModel, this.ObterAuthHeaderJson())
+        let response = this.http.put(this.UrlServiceV1+'/Categorias/atualizar/'+categoriaModel.id, categoriaModel, this.ObterAuthHeaderJson())
         .pipe(
           map(this.extractData),
           catchError(this.serviceError)

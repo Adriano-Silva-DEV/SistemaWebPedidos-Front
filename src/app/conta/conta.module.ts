@@ -12,6 +12,9 @@ import { ContaAppComponent } from './conta.app.component';
 import { ContaService } from './services/conta.service';
 import { CustomFormsModule } from 'ng2-validation';
 import { ContaGuard } from './services/conta.guard';
+import { MenuModule } from '../menu/menu.module';
+import { EnderecoComponent } from './endereco/endereco.component';
+import { DadosUsuarioComponent } from './dados-usuario/dados-usuario.component';
 
 
 @NgModule({
@@ -19,6 +22,8 @@ import { ContaGuard } from './services/conta.guard';
     CadastroComponent,
     LoginComponent,
     ContaAppComponent,
+    EnderecoComponent,
+    DadosUsuarioComponent
   ],
   imports: [
     CommonModule,
@@ -28,6 +33,7 @@ import { ContaGuard } from './services/conta.guard';
     ReactiveFormsModule,
     HttpClientModule,
     CustomFormsModule,
+    MenuModule
   ],
   providers: [
     ContaService,

@@ -1,0 +1,107 @@
+<app-menu-categoria class="m-3"> </app-menu-categoria>
+
+<h3 class="text-center vermelho" *ngIf="!pedido.id  "> Desculpe pedido não encontrado</h3>
+
+<div class="container main-container ">
+
+  <div class="row">
+    <div class="col-sm-2 col-12">
+      <app-menu-usuario [menuActive]="'pedido'"> </app-menu-usuario>
+    </div>
+
+    <div class="col-sm-10 col-12">
+
+      <div class="row pedido-body" *ngIf="pedido.id">
+
+        <div class="col-4  col-sm-2 my-1">
+          PEDIDO Nº <span class="vermelho"> <span *ngIf="pedido.numeroPedido < 10">0</span>{{ pedido.numeroPedido }}
+          </span>
+        </div>
+        <div class="col-8 col-sm-7  my-1">
+          CRIADO EM: <span class="vermelho"> {{ pedido.dataCriacao | date : 'dd/MM/yyyy HH:mm' }} </span>
+        </div>
+        <div class="col-12 col-sm-3  my-1">
+          STATUS: <span class="vermelho text-uppercase"> {{ pedido.status }} </span>
+        </div>
+        <div class="col-12">
+          <br>
+
+          <h3> Itens no Pedido</h3>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col-1">Quantidade</th>
+                <th scope="col-2"> </th>
+                <th scope="col-7">Produto</th>
+                <th scope="col-2">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="table-produto" *ngFor="let item of pedido.itensPedido"
+                [routerLink]="['/page/detalhes',item.produto.id]">
+                <td class="id">{{ item.quantidade }}</td>
+                <td class="img" [routerLink]="['/page/detalhes',item.produto.id]">
+                  <img claass="img-thumbnail rounded-right" src="{{imagens}}/{{ item.produto.imagem1 }}"
+                    onerror="this.src = 'https://cdn.neemo.com.br/uploads/settings_webdelivery/logo/996/notfound.png' "
+                    style="width: 30px; height: 40px">
+                </td>
+                <td class="nome">
+                  {{ item.produto.nome }}
+                </td>
+                <td class="quant">{{ totalItem(item.quantidade , item.produto.precoVenda) | currency:'BRL':true }}</td>
+              </tr>
+              <tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-12 col-sm-6">
+
+          <h3 class="my-4 text-center"> Endereço de entrega </h3>
+
+          <div class="" *ngIf="pedido.enderecoEntrega">
+            Rua: <span class="vermelho text-uppercase">{{ pedido.enderecoEntrega.rua }} </span>
+            nº: <span class="vermelho text-uppercase">{{ pedido.enderecoEntrega.numero }} </span> <br>
+            Bairro: <span class="vermelho text-uppercase">{{ pedido.enderecoEntrega.bairro }} </span> <br>
+            Cidade: <span class="vermelho text-uppercase">{{ pedido.enderecoEntrega.cidade }} </span>
+            <span class="vermelho text-uppercase">- {{ pedido.enderecoEntrega.estado }} </span>
+          </div>
+
+        </div>
+
+        <div class="col-12 col-sm-6">
+          <h3 class="my-4 text-center"> Forma de Pagamento </h3>
+
+
+          Tipo de pagamento: <img class="img-icon-meio-pagamento" [src]="pedido.meioPagamento.img"> <span
+            class="vermelho text-uppercase"> {{pedido.meioPagamento.nome}} </span> <br>
+
+          <span *ngIf="pedido.meioPagamento.valorMinParcela == 999999999">
+            Pagamento avista:
+
+          </span>
+
+          <span *ngIf="pedido.meioPagamento.valorMinParcela != 999999999">
+            Quantidade de parcelas:
+            <span class="vermelho text-uppercase"> {{pedido.quantidadeParcela}} X </span>
+          </span>
+
+          <span class="vermelho text-uppercase"> {{ pedido.valorTotal/pedido.quantidadeParcela | currency:'BRL':true}}
+          </span> <br>
+          <span class="" *ngIf="pedido.troco != null"> Troco para: <span class="vermelho text-uppercase"> {{pedido.troco
+              | currency:'BRL':true}} </span> </span>
+
+
+
+        </div>
+
+        <div class="col-12 text-center mt-5">
+          <h1> Total do pedido: <span class="vermelho text-uppercase"> {{ pedido.valorTotal | currency:'BRL':true}}
+            </span> </h1>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

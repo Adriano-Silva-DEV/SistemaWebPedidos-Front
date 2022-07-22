@@ -38,7 +38,7 @@ export class ExcluirComponent {
     const toast = this.toastr.success('Fornecedor excluido com Sucesso!', 'Sucesso');
     if (toast) {
       toast.onHidden.subscribe(() => {
-        this.router.navigate(['/fornecedores/listar-todos']);
+        this.router.navigate(['/adm/fornecedores/listar-todos']);
       });
     }
   }

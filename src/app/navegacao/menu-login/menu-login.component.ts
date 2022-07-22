@@ -16,8 +16,22 @@ export class MenuLoginComponent {
   localStorageUtils = new LocalStorageUtils();
   admin: boolean;
 
-
+  badge: number = 0;
   constructor(private router: Router) {  }
+
+  ngOnInit(): void {
+    setInterval(() => {
+      
+      if (this.  localStorageUtils.obterCarrinho())
+      this.badge = this.  localStorageUtils.obterCarrinho().itemCarrinho.length;
+      else {
+        this.badge = 0;
+      }
+    
+    }, 1000);
+
+  }
+
 
   usuarioLogado(): boolean {
     this.token = this.localStorageUtils.obterTokenUsuario();

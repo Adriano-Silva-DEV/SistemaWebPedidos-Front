@@ -9,12 +9,16 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FornecedorModule } from './fornecedor/fornecedor.module';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { HTTP_INTERCEPTORS, HttpClientModule, HttpInterceptor } from '@angular/common/http';
+import {
+  HTTP_INTERCEPTORS,
+  HttpClientModule,
+  HttpInterceptor,
+} from '@angular/common/http';
 import { ErrorInterceptor } from './services/error.handler.service';
 import { ProdutoModule } from './produto/produto.module';
 import { CommonModule } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
-import {registerLocaleData} from '@angular/common';
+import { registerLocaleData } from '@angular/common';
 import { CategoriaModule } from './categoria/categoria.module';
 import { MenuAdmComponent } from './menu/menu-adm/menu-adm.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
@@ -22,22 +26,24 @@ import { MenuModule } from './menu/menu.module';
 import { SobreModule } from './sobre/sobre.module';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { FaleConoscoComponent } from './fale-conosco/fale-conosco.component';
+import { FaleConoscoModule } from './fale-conosco/fale-conosco.module';
 
-registerLocaleData(localePt)
+registerLocaleData(localePt);
 
-export const httpInterceptorProviders = 
-  { provide : HTTP_INTERCEPTORS, useclass: ErrorInterceptor, multi: true}
-;
+export const httpInterceptorProviders = {
+  provide: HTTP_INTERCEPTORS,
+  useclass: ErrorInterceptor,
+  multi: true,
+};
 
 @NgModule({
-  declarations: [
-    AppComponent,
- 
-  ],
+  declarations: [AppComponent],
   imports: [
     CommonModule,
     BrowserModule,
@@ -46,38 +52,37 @@ export const httpInterceptorProviders =
     FornecedorModule,
     CategoriaModule,
     NgbModule,
-    BrowserAnimationsModule, 
-    ToastrModule.forRoot(), 
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     NgxSpinnerModule,
-    HttpClientModule, 
+    HttpClientModule,
     ProdutoModule,
     NgxSpinnerModule,
     MenuModule,
     SobreModule,
     MatSliderModule,
-    MatSliderModule,   
+    MatSliderModule,
     MatButtonModule,
-MatMenuModule,
-MatToolbarModule,
-MatIconModule,
-MatCardModule
+    MatMenuModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatCardModule,
+    MatTooltipModule,
+    FaleConoscoModule,
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt-BR' },
-   { provide : HTTP_INTERCEPTORS, 
-    useClass: ErrorInterceptor, 
-    multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
-  exports:[],
+  exports: [],
   bootstrap: [AppComponent],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {
-
   getFormattedPrice(price: number) {
-    return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(price);
+    return new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL',
+    }).format(price);
+  }
 }
-
- }
-
-
