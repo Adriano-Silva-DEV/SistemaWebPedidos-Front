@@ -2,9 +2,9 @@
 
 <div class="container-fluid main-container  ">
     <div class="row text-center">
-<h3>Exibindo resultados para "{{this.id }}"</h3>
+<h3 *ngIf="produtos.length != 0" >Exibindo resultados para "{{this.id }}"</h3>
         <app-card-produto *ngIf="produtos.length > 0  " [produtos]="produtos"> </app-card-produto>
 
-        <h2 *ngIf="produtos.length == 0 "> Desculpe não foram encontrados produtos para "{{ id }} " </h2>
+        <h3 *ngIf="produtos.length == 0 "> Desculpe não foram encontrados produtos para "{{ id }} " </h3>
     </div>
 </div>

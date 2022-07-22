@@ -16,6 +16,10 @@ export class MenuComponent implements OnInit {
   sobre: Sobre;
   @ViewChild('busca')
   busca: ElementRef;
+
+  @ViewChild('busca1')
+  busca1: ElementRef;
+
   imagens: string = environment.imgUrl;
   admin: boolean = false;
   exibirMenuAdministrador: boolean = false;
@@ -42,6 +46,7 @@ export class MenuComponent implements OnInit {
     this.sobre = new Sobre();
   }
 
+  
   buscar() {
     if (
       this.busca.nativeElement.value != 'undefined' &&
@@ -80,5 +85,17 @@ export class MenuComponent implements OnInit {
         : false;
     }
     return this.token !== null;
+  }
+
+    
+  buscar1() {
+    console.log();
+    if (
+      this.busca1.nativeElement.value != 'undefined' &&
+      typeof this.busca1.nativeElement.value != 'undefined' && this.busca1.nativeElement.value != ''
+    ) {
+      this.router.navigate(['/page/busca', this.busca1.nativeElement.value]);
+      this.busca1.nativeElement.value = '';
+    }
   }
 }
