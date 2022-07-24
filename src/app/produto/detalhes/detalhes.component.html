@@ -38,8 +38,8 @@
                     Valor
                 </dt>
                 <dd>
-                    {{ produto.precoVenda }}
-                    currencyBrazi
+                    {{ produto.precoVenda | currency:'BRL':true}}
+                
                 </dd>
                 <dt>
                     DataCadastro

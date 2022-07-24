@@ -91,7 +91,8 @@ export class LoginComponent implements OnInit {
 
     if (toast){
       toast.onHidden.subscribe(  () =>
-        this.router.navigate(['/home'])
+      //  this.router.navigate(['/home'])
+      window.history.back()
       )
     }
   }
