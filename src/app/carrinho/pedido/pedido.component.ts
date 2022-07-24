@@ -75,9 +75,7 @@ export class PedidoComponent implements OnInit {
       if (falha.status == 401 || falha.status == 402 || falha.status == 403  ){
       let toast =  this.toastr.info("Faça login para finalizar seu pedido");
       if (toast){
-        toast.onHidden.subscribe(  () =>
-          this.router.navigate(['/conta/login'])
-        )
+        this.router.navigate(['/conta/login'])     
       }
     }}
     );

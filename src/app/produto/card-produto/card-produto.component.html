@@ -24,13 +24,16 @@
                           {{ produto.nome }} <br>
                            
                         </div>
-                        <span class="preco m-5"> {{produto.precoVenda | currency:'BRL':true }} </span>
+                        <span class="preco m-4"> {{produto.precoVenda | currency:'BRL':true }} </span>
                     </div>
                 </div>
                 <button mat-raised-button class="comprar" color="warn" [disabled]="produto.quantidadeDisponivel < 1" (click)="adcionarCarrinho(produto)"><i
-                        class="fa-solid fa-cart-shopping "></i> Comprar</button>
-                        <br>
+                        class="fa-solid fa-cart-shopping "></i> 
                         <span *ngIf="produto.quantidadeDisponivel < 1" > Indisponivel </span>
+                        <span *ngIf="produto.quantidadeDisponivel > 0" >  Comprar </span>
+                      </button>
+                        <br>
+                        
             </div>
         </div> 
     </mat-card>

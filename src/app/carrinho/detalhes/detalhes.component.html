@@ -8,45 +8,46 @@
 
     <div class="row">
 
-        <mat-card class="col-6 col-md-4">
+        <mat-card class="col-12 col-md-4">
 
             <img class="img-fluid rounded " src="{{imagens}}/{{ produto.imagem1 }}" style="width: 300px; height: 428px">
 
         </mat-card>
 
-        <div class="col-6 col-md-8">
+        <mat-card class=" col-12  col-md-8 ">
+            <div class="produto-descricao row">
+                <div class="col-12">
+                    <dl>
+                        <dt>
+                            <h1> Descrição</h1>
+                        </dt>
+                        <dd>
 
-            <mat-card class="produto-descricao">
-                <dl>
-                    <dt>
-                       <h1> Descrição</h1> 
-                    </dt>
-                    <dd>
-                      
-                        {{ produto.descricao }}
-                    </dd>
-                    <dt>
-                        <br>
-                        Valor
-                    </dt>
-                    <dd>
-                        {{ produto.precoVenda | currency:'BRL':true }}
+                            {{ produto.descricao }}
+                        </dd>
+                        <dt>
+                            <br>
+                            Valor
+                        </dt>
+                        <dd>
+                            {{ produto.precoVenda | currency:'BRL':true }}
 
-                    </dd>
-                </dl>
-
-                <div class="buton position-relative">
-                    <button mat-raised-button color="warn" [disabled]="produto.quantidadeDisponivel < 1" (click)="adcionarCarrinho(produto)"><i
-                            class="fa-solid fa-cart-shopping "></i> Carrinho</button>
-                    &nbsp; &nbsp;
-                    <a class="btn btn-info" href="javascript:window.history.back();">Voltar</a>
-                    <br>
-                    <span *ngIf="produto.quantidadeDisponivel < 1" > Indisponivel </span>
-
+                        </dd>
+                    </dl>
                 </div>
-            </mat-card>
-        </div>
+                <div class="col-12">
+                    <div class="buton position-relative">
+                        <button mat-raised-button color="warn" [disabled]="produto.quantidadeDisponivel < 1"
+                            (click)="adcionarCarrinho(produto)"><i class="fa-solid fa-cart-shopping "></i>
+                            Carrinho</button>
+                        &nbsp; &nbsp;
+                        <a class="btn btn-info" href="javascript:window.history.back();">Voltar</a>
+                        <br>
+                        <span *ngIf="produto.quantidadeDisponivel < 1"> Indisponivel </span>
+
+                    </div>
+                </div>
+            </div>
+        </mat-card>
     </div>
-
-
 </div>
