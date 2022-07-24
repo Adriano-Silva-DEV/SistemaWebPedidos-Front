@@ -3,7 +3,7 @@
 <div class="container main-container my-5">
 
 
-    <h3> {{ produto.nome }} </h3>
+    <h3 class="text-center"> {{ produto.nome | uppercase }} </h3>
     <br>
 
     <div class="row">
@@ -22,7 +22,6 @@
                             <h1> Descrição</h1>
                         </dt>
                         <dd>
-
                             {{ produto.descricao }}
                         </dd>
                         <dt>
@@ -30,8 +29,7 @@
                             Valor
                         </dt>
                         <dd>
-                            {{ produto.precoVenda | currency:'BRL':true }}
-
+                       <span>  {{ produto.precoVenda | currency:'BRL':true }} </span> 
                         </dd>
                     </dl>
                 </div>
