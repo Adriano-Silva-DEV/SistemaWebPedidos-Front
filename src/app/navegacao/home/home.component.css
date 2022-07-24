@@ -7,3 +7,17 @@
     background-color: rgb(212, 28, 28) !important;
     border: rgb(212, 28, 28) !important;
 }
+
+.banner1{
+    width: 100%;
+    margin: 0;
+}
+
+
+@media (min-width: 900px) {
+    .banner1{
+        height: 250px;
+        width: 1200px
+    }   
+  }
+
