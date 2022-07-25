@@ -93,7 +93,7 @@ html {
   }
 
   .img-logo{
-    width: 120px;
+    width: 90px;
   }
   .topo {
     z-index: -1 !important;
@@ -108,7 +108,7 @@ html {
     border-radius: 3px !important;
     border-top-left-radius: 0px !important;
     border-top-right-radius: 0px !important;
-    min-height: 100px !important;
+    min-height: 120px !important;
   }
 
   .carrinho-icon{
@@ -285,7 +285,7 @@ body {
 
 .img-logo-footer{
   width: 250px !important;
-  background-color: #dddbdb;
+  
 }
 .link{
   text-decoration: none;

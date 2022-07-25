@@ -51,35 +51,35 @@ export class CadastroComponent implements OnInit, AfterViewInit {
       },
       nome:{
         required: 'Informe o nome',
-        rangeLength: 'A senha deve possuir entre 3 e 100 caracteres',
+        rangeLength: 'O nome deve possuir entre 3 e 100 caracteres',
       },
       sobrenome:{
         required: 'Informe o sobrenome',
-        rangeLength: 'A senha deve possuir entre 3 e 100 caracteres',
+        rangeLength: 'O sobrenome deve possuir entre 3 e 100 caracteres',
       },
       telefone:{
         required: 'Informe o telefone',
-        rangeLength: 'A senha deve possuir entre 10 e 12 caracteres',
+        rangeLength: 'o telefone deve possuir entre 10 e 12 caracteres',
       },
       numero:{
         required: 'Informe o número',
-        rangeLength: 'A senha deve possuir entre 1 e 5 caracteres',
+        rangeLength: 'O número deve possuir entre 1 e 5 caracteres',
       },
       bairro:{
         required: 'Informe o bairro',
-        rangeLength: 'A senha deve possuir entre 2 e 100 caracteres',
+        rangeLength: 'O bairro  deve possuir entre 2 e 100 caracteres',
       },
       rua:{
         required: 'Informe a rua',
-        rangeLength: 'A senha deve possuir entre 1 e 100 caracteres',
+        rangeLength: 'A rua deve possuir entre 1 e 100 caracteres',
       },
       cidade:{
         required: 'Informe a cidade',
-        rangeLength: 'A senha deve possuir entre 2 e 100 caracteres',
+        rangeLength: 'A cidade deve possuir entre 2 e 100 caracteres',
       },
       estado:{
         required: 'Informe o estado',
-        rangeLength: 'A senha deve possuir entre 2 e 100 caracteres',
+        rangeLength: 'O estado deve possuir entre 2 e 100 caracteres',
       } 
     };
 
