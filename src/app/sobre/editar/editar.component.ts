@@ -180,11 +180,11 @@ export class EditarComponent implements OnInit {
       cidade: cidade,
       estado: estado,
       tipoDocumento: ['', [Validators.required]],
-      imagem: [''],
-      imagem1: ['']
+      /* imagem: [''],
+      imagem1: [''] */
     });
 
-    this.imgAtual = this.sobre.imagem1;
+   // this.imgAtual = this.sobre.imagem1;
     this.preencherForm();
   }
 
@@ -194,7 +194,7 @@ export class EditarComponent implements OnInit {
       tipoDocumento: this.sobre.pessoaFisica == true ? "1" : "2",
       documento:
         this.sobre.pessoaFisica ? this.sobre.cpf : this.sobre.cnpj,
-  
+
       razaoSocial: this.sobre.razaoSocial,
       nomeEstabelecimento: this.sobre.nomeEstabelecimento,
       horarioAbertura: this.sobre.horarioAbertura,
@@ -208,11 +208,9 @@ export class EditarComponent implements OnInit {
       bairro: this.sobre.bairro,
       cidade: this.sobre.cidade,
       estado: this.sobre.estado,
-      imagem1: this.sobre.imagem1,
+     // imagem1: this.sobre.imagem1,
 
     });
-
-  
 
     if (this.tipoDocumentoForm().value === '1') {
       this.documento().setValidators([

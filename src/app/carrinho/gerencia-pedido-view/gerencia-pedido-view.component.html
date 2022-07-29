@@ -21,12 +21,14 @@
           CRIADO EM: <span class="vermelho"> {{ pedido.dataCriacao | date : 'dd/MM/yyyy HH:mm' }} </span>
         </div>
         <div class="col-12 col-sm-3  my-1">
-          STATUS: 
+          STATUS:
           <select class="form-control"  [(ngModel)]="selectStatus.nome">
             <option *ngFor="let item of status"   value="{{ item.nome }}">{{ item.nome }}</option>
           </select>
           <!-- <span class="vermelho text-uppercase"> {{ pedido.status }} </span> -->
         </div>
+        <div class="col-12 col-sm-4 "> CLIENTE: {{dadosCliente.usuario.nome | uppercase}} {{dadosCliente.usuario.sobrenome | uppercase}} </div>
+        <div class="col-12 col-sm-4  my-1"> Contato: {{dadosCliente.usuario.telefone | uppercase}}  </div>
         <div class="col-12">
           <br>
 
@@ -102,7 +104,7 @@
         </div>
       </div>
 
-      <div class="row text-center">
+      <div class="row text-center" *ngIf="pedido.id">
           <div class="col-12">
             <button mat-raised-button (click)="mudarStatusPedido()" class="col-6" color="primary">SALVAR</button>
           </div>

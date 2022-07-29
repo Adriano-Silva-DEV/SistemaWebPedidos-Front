@@ -25,7 +25,7 @@ export class ListaGerenciaPedidoComponent implements OnInit {
   constructor( private router: Router,
     private route: ActivatedRoute,
     private contaService: ContaService,
-    private toastr: ToastrService,private pedidoService: PedidoService, private spinner: NgxSpinnerService) { 
+    private toastr: ToastrService,private pedidoService: PedidoService, private spinner: NgxSpinnerService) {
 
     }
 
@@ -39,7 +39,7 @@ export class ListaGerenciaPedidoComponent implements OnInit {
   buscarPedidos(paginaAtual: number){
     this.spinner.show();
 
-   
+
     let skip = paginaAtual == 1 || !paginaAtual  ? 0 : this.totalItensPorPagina * (paginaAtual - 1);
 
     this.pedidoService.buscarTodos(skip, this.totalItensPorPagina ).subscribe(
@@ -53,10 +53,10 @@ export class ListaGerenciaPedidoComponent implements OnInit {
       if (falha.status == 401 || falha.status == 402 || falha.status == 403  ){
         this.contaService.localStorage.limparDadosLocaisUsuario();
         this.toastr.error('FAça login novamente na aplicação')
-        this.router.navigate(['/conta/login']);      
+        this.router.navigate(['/conta/login']);
       }
   });
-}
 
+}
 
 }

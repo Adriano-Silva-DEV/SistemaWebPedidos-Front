@@ -5,8 +5,8 @@
             <div class=" col-sm-2 col-12 ">
                 <app-menu-adm [menuActive]="'sobre'"> </app-menu-adm>
             </div>
-    
-    
+
+
             <div class=" col-sm-10 col-12 ">
 
                 <h3>INFORMAÇÕES DO SITE </h3>
@@ -32,18 +32,18 @@
                     </div>
                 </div>
 
-                <div  class="row">
-                    <div class=" col-12 col-sm-6 img-thumbnail" *ngIf='imgAtual'>  
+                <!-- <div  class="row">
+                    <div class=" col-12 col-sm-6 img-thumbnail" *ngIf='imgAtual'>
                         <img class="" src="{{imagens}}/{{ imgAtual }}" style="width: 250px; height: 250px">
                         <h5>Imagem atual</h5>
                         <button type="button" class="btn btn-danger" (click)='excluirImg()'>Excluir imagem</button>
                     </div>
-                    <div class=" col-12 col-sm-6 img-thumbnail" *ngIf='imagemNome'>                    
+                    <div class=" col-12 col-sm-6 img-thumbnail" *ngIf='imagemNome'>
                         <image-cropper class="m-2" [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="false" [containWithinAspectRatio]="containWithinAspectRatio" [aspectRatio]="4 / 3" [resizeToWidth]="2048" [cropperMinWidth]="128" [onlyScaleDown]="true" [roundCropper]="false"
                             [canvasRotation]="canvasRotation" [transform]="transform" [alignImage]="'left'" [style.display]="showCropper ? null : 'none'" format="jpeg" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady($event)"
                             (loadImageFailed)="loadImageFailed()"></image-cropper>
                             <h5 class="">Nova imagem </h5>
-                    </div>                
+                    </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label m-3"></label>
@@ -57,9 +57,8 @@
                         </span>
                     </div>
 
-
                 </div>
-
+-->
              <div class="form-group">
                     <label class="control-label">Descrição</label>
                     <div>
@@ -69,8 +68,8 @@
                         </span>
                     </div>
                 </div>
-                 
-   
+
+
                 <div class="form-group">
                     <label class="control-label">Razao Social</label>
                     <div>
@@ -81,7 +80,7 @@
                     </div>
                 </div>
 
-                
+
                 <div class="form-group">
                     <label class="control-label">Contato Principal</label>
                     <div>
@@ -92,7 +91,7 @@
                     </div>
                 </div>
 
-              
+
 
                 <div class="form-group">
                     <label class="control-label">Email </label>
@@ -117,7 +116,7 @@
 
                 <div class="form-group">
                     <label class="control-label" for="TipoDocumento">Tipo</label> <br>
-                    <input type="radio" value="1" id="tipoDocumento" formControlName="tipoDocumento" name="tipoDocumento"> Pessoa Física 
+                    <input type="radio" value="1" id="tipoDocumento" formControlName="tipoDocumento" name="tipoDocumento"> Pessoa Física
                     <input type="radio" value="2" id="tipoDocumento" formControlName="tipoDocumento" name="tipoDocumento"> Pessoa Jurídica
                 </div>
 
@@ -197,7 +196,7 @@
                         <p [innerHTML]="displayMessage.estado"></p>
                     </span>
                     </div>
-                </div> 
+                </div>
                 <div class="form-group">
                     <input type="submit" [disabled]="!sobreForm.valid" value="Cadastrar" class="btn btn-primary">&nbsp;
                     <a class="btn btn-info" href="/adm/produtos/listar-todos">Voltar</a>

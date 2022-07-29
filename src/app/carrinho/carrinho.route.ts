@@ -14,6 +14,7 @@ import { PedidoComponent } from './pedido/pedido.component';
 import { PedidoResolve } from './service/pedido.resolve';
 import { ListaGerenciaPedidoComponent } from './lista-gerencia-pedido/lista-gerencia-pedido.component';
 import { GerenciaPedidoViewComponent } from './gerencia-pedido-view/gerencia-pedido-view.component';
+import { PedidoAdmResolve } from './service/pedido-adm.resolve';
 
 const produtoRouterConfig: Routes = [
   {
@@ -53,7 +54,7 @@ const produtoRouterConfig: Routes = [
         path: 'gerenciar-pedido-visualizar/:id',
         component: GerenciaPedidoViewComponent,
         canActivate: [FornecedorGuard],
-        resolve: { pedido: PedidoResolve },
+        resolve: { pedido: PedidoAdmResolve },
         data: [{ claim: { nome: 'Fornecedor', valor: 'Atualizar'}}]
       },
     ],

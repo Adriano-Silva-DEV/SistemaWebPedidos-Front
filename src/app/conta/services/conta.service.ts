@@ -42,7 +42,7 @@ export class ContaService extends BaseService {
     return response;
   }
 
-  
+
   dadosUsuario(): Observable<DadosUsuario> {
     let response = this.http
       .get<DadosUsuario>(this.UrlServiceV1 + '/Auth/dados-usuario',  super.ObterAuthHeaderJson())

@@ -12,6 +12,7 @@ import { Pedido } from '../models/pedido';
 import { PedidoService } from '../service/pedido.service';
 import { Endereco } from 'src/app/conta/models/usuario';
 import { environment } from 'src/environments/environment';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-pedido',
@@ -32,12 +33,14 @@ export class PedidoComponent implements OnInit {
   MASKS = utilsBr.MASKS;
   pedido: Pedido = new Pedido();
   imagens: string = environment.imgUrl;
+  processando: boolean;
   constructor(
     private router: Router,
     private contaService: ContaService,
     private meioPagamentoService: MeioPagamentoService,
-    private toastr: ToastrService, 
-    private pedidoService: PedidoService
+    private toastr: ToastrService,
+    private pedidoService: PedidoService,
+    private spinner: NgxSpinnerService,
   ) {
     toastr.toastrConfig.progressBar = true;
     toastr.toastrConfig.timeOut = 4000;
@@ -76,7 +79,7 @@ export class PedidoComponent implements OnInit {
       let toast =  this.toastr.info("Faça login para finalizar seu pedido");
       if (toast){
         this.contaService.localStorage.limparDadosLocaisUsuario();
-        this.router.navigate(['/conta/login'])     
+        this.router.navigate(['/conta/login'])
       }
     }}
     );
@@ -117,27 +120,30 @@ export class PedidoComponent implements OnInit {
     if (this.meioPagamento == null || this.quantidadeParcela == null){
       this.toastr.info('Selecione a forma de pagamento');
     } else {
-     
-      this.pedido.itensPedido = []; 
-      this.pedido.MeioPagamentoId = this.meioPagamento.id; 
+      this.spinner.show();
+      this.processando = true;
+
+      this.pedido.itensPedido = [];
+      this.pedido.MeioPagamentoId = this.meioPagamento.id;
       this.pedido.quantidadeParcela = this.quantidadeParcela;
       this.pedido.troco = this.trocoF();
 
-    
-       this.itensCarrinho.forEach( item => { 
- 
+
+       this.itensCarrinho.forEach( item => {
+
         let itensCarrinho : ItemCarrinho = {
-            produtoId: item.produto.id,       
+            produtoId: item.produto.id,
              quantidade: item.quantidade
         }
 
         this.pedido.itensPedido.push(itensCarrinho);
       });
-     
 
 
-    this.pedidoService.processar(this.pedido).subscribe( 
+
+    this.pedidoService.processar(this.pedido).subscribe(
       sucesso => {  this.localStorage.limparCarrinho();
+        this.spinner.hide();
         let toast =  this.toastr.success("Pedido de nº "+sucesso.numeroPedido+" gerado com sucesso");
         if (toast){
           toast.onHidden.subscribe(  () =>
@@ -145,7 +151,9 @@ export class PedidoComponent implements OnInit {
           )
         }
       },
-      falha => { this.toastr.error('Ocorreu um erro na solicitação')
+      falha => {
+        this.spinner.hide();
+         this.toastr.error('Ocorreu um erro na solicitação')
                  if (falha.status == 401 || falha.status == 402 || falha.status == 403  ){
                    this.contaService.localStorage.limparDadosLocaisUsuario();
                   this.router.navigate(['/conta/login'])

@@ -8,6 +8,7 @@ import { BaseService } from 'src/app/services/base.service';
 import { Fornecedor } from "src/app/fornecedor/models/fornecedor";
 import { Endereco } from '../../fornecedor/models/endereco';
 import { Pedido } from "../models/pedido";
+import { DadosUsuario } from "src/app/conta/models/usuario";
 
 @Injectable()
 export class PedidoService extends BaseService {
@@ -50,6 +51,15 @@ export class PedidoService extends BaseService {
                 );
     }
 
+    buscarPedidoAdmId(id): Observable<Pedido> {
+      return this.http
+          .get<Pedido>(this.UrlServiceV1 + "/Pedido/adm/"+id, super.ObterAuthHeaderJson())
+          .pipe(
+              map(this.extractData),
+              catchError(this.serviceError)
+              );
+  }
+
     buscarTodos(skip: number, take: number): Observable<Pedido[]> {
         return this.http
             .get<Pedido[]>(this.UrlServiceV1 + `/Pedido?skip=${skip}&take${take}`, super.ObterAuthHeaderJson())
@@ -67,4 +77,12 @@ export class PedidoService extends BaseService {
                 catchError(this.serviceError)
                 );
     }
+
+    dadosUsuario(id): Observable<DadosUsuario> {
+      let response = this.http
+        .get<DadosUsuario>(this.UrlServiceV1 + '/Auth/dados-usuario/'+id,  super.ObterAuthHeaderJson())
+        .pipe(map(this.extractData), catchError(this.serviceError));
+      return response;
+    }
+
 }

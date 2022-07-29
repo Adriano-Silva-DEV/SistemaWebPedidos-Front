@@ -33,6 +33,7 @@ import { ListaGerenciaPedidoComponent } from './lista-gerencia-pedido/lista-gere
 import { FornecedorResolve } from '../fornecedor/services/fornecedor.resolve';
 import { FornecedorGuard } from '../fornecedor/services/fornecedor.guard';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { PedidoAdmResolve } from './service/pedido-adm.resolve';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     { provide: LOCALE_ID, useValue: 'pt' },
     CarrinhoGuard,
     PedidoResolve,
-    FornecedorGuard
+    FornecedorGuard,
+    PedidoAdmResolve,
   ]
 })
 export class CarrinhoModule {}
