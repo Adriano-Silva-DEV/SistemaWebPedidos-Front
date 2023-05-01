@@ -1,4 +1,4 @@
-# SistemaWebPedidos
+# SistemaWebPedidos Projeto de conclusão de curso
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.6.
 
